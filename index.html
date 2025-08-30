@@ -91,6 +91,10 @@ input:focus { border-color:var(--accent); background:#fff; }
   <button class="tab" onclick="switchTab('target')">Target GPA</button>
 </div>
 
+
+<!---------------------------------------------------------------------------->
+
+
 <!-- CURRENT GPA -->
 <div id="current" class="tab-content active">
   <label>Number of nozzles</label>
@@ -120,13 +124,17 @@ input:focus { border-color:var(--accent); background:#fff; }
     <div class="results-grid">
       <div class="result-card"><h3>Ground speed</h3><p><span id="speed_current"></span> mph</p></div>
       <div class="result-card"><h3>Nozzle flow rate</h3><p><span id="gpm_current"></span> GPM per nozzle</p></div>
-      <div class="result-card"><h3>Per nozzle in 15 s</h3><p><span id="pernoz15_fl"></span> fl oz (<span id="pernoz15_ml"></span> mL)</p></div>
+      <div class="result-card"><h3>Per nozzle in 15s</h3><p><span id="pernoz15_fl"></span> fl oz (<span id="pernoz15_ml"></span> mL)</p></div>
       <div class="result-card"><h3>Total boom output (15 s)</h3><p><span id="boom15_fl"></span> fl oz (<span id="boom15_ml"></span> mL)</p></div>
       <div class="result-card"><h3>Gallons per acre (GPA)</h3><p><span id="gpa_current"></span></p></div>
       <div class="result-card"><h3>Tanks per acre</h3><p><span id="tanks_per_acre_current"></span></p></div>
     </div>
   </div>
 </div>
+
+
+<!---------------------------------------------------------------------------->
+
 
 <!-- TARGET GPA -->
 <div id="target" class="tab-content">
@@ -159,7 +167,7 @@ input:focus { border-color:var(--accent); background:#fff; }
     <div class="results-grid">
       <div class="result-card"><h3>Ground speed</h3><p><span id="speed_target"></span> mph</p></div>
       <div class="result-card"><h3>Required nozzle flow</h3><p><span id="gpm_target"></span> GPM per nozzle</p></div>
-      <div class="result-card"><h3>Per nozzle in 15 s</h3><p><span id="req15_fl"></span> fl oz (<span id="req15_ml"></span> mL)</p></div>
+      <div class="result-card"><h3>Per nozzle in 15s</h3><p><span id="req15_fl"></span> fl oz (<span id="req15_ml"></span> mL)</p></div>
       <div class="result-card"><h3>Total boom output (15 s)</h3><p><span id="boom15_fl_target"></span> fl oz (<span id="boom15_ml_target"></span> mL)</p></div>
       <div class="result-card"><h3>Tanks per acre</h3><p><span id="tanks_per_acre_target"></span></p></div>
     </div>
