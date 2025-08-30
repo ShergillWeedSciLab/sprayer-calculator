@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <title>SWSL Sprayer Calibration</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg1: #f5f7fa;
@@ -40,9 +39,7 @@
   }
 
   h1 {
-    font-family: 'Poppins', sans-serif;
     font-size: 2rem;
-    font-weight: 700;
     text-align: center;
     margin: 0 0 20px;
     background: linear-gradient(90deg, #007aff, #00c6ff);
@@ -67,7 +64,6 @@
     background: #f0f2f5;
     color: #333;
     border-radius: 10px 10px 0 0;
-    font-weight: 600;
     cursor: pointer;
     transition: background 0.25s ease;
   }
@@ -79,7 +75,6 @@
 
   label {
     display: block;
-    font-weight: 600;
     margin-top: 14px;
     color: #444;
   }
@@ -115,7 +110,6 @@
     background: var(--brand);
     color: white;
     font-size: 16px;
-    font-weight: 700;
     border: none;
     border-radius: 12px;
     cursor: pointer;
@@ -147,7 +141,6 @@
     margin-top: 18px;
   }
 
-  /* GPA Button Styles */
   .gpa-options {
     display: flex;
     gap: 10px;
@@ -160,7 +153,6 @@
     border: 1px solid var(--brand);
     background: #f0f2f5;
     color: var(--brand);
-    font-weight: 700;
     cursor: pointer;
     transition: all 0.2s ease;
   }
@@ -190,54 +182,4 @@
 
     <label>Calibration distance (feet)</label>
     <input type="number" id="calib_distance_ft" value="100" min="1" step="1" />
-    <div class="description">Measured course length that you travel at application speed. Use a measuring tape & flags.</div>
-
-    <label>Calibration time for that distance (seconds)</label>
-    <input type="number" id="calib_time_sec" value="15" min="1" step="0.1" />
-    <div class="description">Time required to travel the calibration distance at application speed. Use a stopwatch. This defines ground speed.</div>
-
-    <label>Per nozzle catch in 15 seconds (mL)</label>
-    <input type="number" id="catch_15s_ml" value="150" min="0" step="0.1" />
-    <div class="description">With the sprayer stationary, run the system at operating pressure and collect output from one nozzle for 15 seconds. <strong>Pro-Tip:</strong> average from at least 3 nozzles.</div>
-
-    <button class="calc-btn" onclick="calculateCurrent()">Calculate Current GPA</button>
-
-    <div class="results" id="results-current" style="display: none;">
-      <h2>Results</h2>
-      <p><b>Ground speed:</b> <span id="speed_current"></span> mph</p>
-      <p><b>Nozzle flow rate:</b> <span id="gpm_current"></span> GPM per nozzle</p>
-      <p><b>Per nozzle in 15 s:</b> <span id="pernoz15_gal"></span> gallons (<span id="pernoz15_ml"></span> mL)</p>
-      <p><b>Total boom in 15 s:</b> <span id="boom15_gal"></span> gallons (<span id="boom15_ml"></span> mL)</p>
-      <p><b>Gallons per acre (GPA):</b> <span id="gpa_current"></span></p>
-    </div>
-  </div>
-
-  <!-- TARGET GPA -->
-  <div id="target" class="tab-content">
-    <label><strong>Desired Application Rate (GPA)</strong></label>
-    <div class="gpa-options">
-      <button type="button" class="gpa-btn active" onclick="selectGPA(10)">10 GPA</button>
-      <button type="button" class="gpa-btn" onclick="selectGPA(15)">15 GPA</button>
-      <button type="button" class="gpa-btn" onclick="selectGPA(20)">20 GPA</button>
-      <button type="button" class="gpa-btn" id="custom-btn" onclick="enableCustomGPA()">Custom</button>
-    </div>
-    <input type="number" id="target_gpa" value="15" style="margin-top:8px; width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border); display:none;" placeholder="Enter custom GPA">
-    <div class="description">Pick a target GPA or choose custom to enter any value.</div>
-
-    <label>Nozzle spacing (inches)</label>
-    <input type="number" id="spacing_in_target" value="20" min="1" step="0.5" />
-    <div class="description">Center-to-center distance between adjacent nozzles in inches.</div>
-
-    <label>Calibration distance (feet)</label>
-    <input type="number" id="calib_distance_ft_target" value="100" min="1" step="1" />
-    <div class="description">Measured course length at application speed. Use tape & flags.</div>
-
-    <label>Calibration time for that distance (seconds)</label>
-    <input type="number" id="calib_time_sec_target" value="15" min="1" step="0.1" />
-    <div class="description">Time required to travel the calibration distance at application speed. This defines ground speed.</div>
-
-    <button class="calc-btn" onclick="calculateTarget()">Calculate Volume Required Per Nozzle (15s Catch)</button>
-
-    <div class="results" id="results-target" style="display: none;">
-      <h2>Required Volume</h2>
-      <p><b>Ground speed:</b> <span id="speed_target"></span> mph
+    <div
