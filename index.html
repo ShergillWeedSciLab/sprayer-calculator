@@ -2,239 +2,216 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>SWSL Sprayer Calibration</title>
+<title>Sprayer Calibration App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background: linear-gradient(135deg, #f5f7fa, #e4ebf0);
-  color: #333;
-  margin: 0;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  box-sizing: border-box;
-}
-
-.container {
-  background: white;
-  padding: 40px 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  max-width: 550px;
-  width: 90%;
-  box-sizing: border-box;
-  margin: 20px;
-}
-
-h1 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  text-align: center;
-  color: #1c1c1e;
-  margin-bottom: 20px;
-}
-
-/* Tabs */
-.tab {
-  display: flex;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #ddd;
-}
-
-.tab button {
-  flex: 1;
-  padding: 10px;
-  cursor: pointer;
-  background: #f9f9f9;
-  border: none;
-  font-weight: 500;
-  font-size: 16px;
-  transition: background 0.3s ease;
-}
-
-.tab button.active {
-  background: #007aff;
-  color: white;
-  border-radius: 10px 10px 0 0;
-}
-
-.tab button:hover:not(.active) {
-  background: #e0e0e0;
-}
-
-.tabcontent {
-  display: none;
-}
-
-/* Inputs & results */
-label {
-  font-weight: 500;
-  margin-top: 15px;
-  display: block;
-  color: #555;
-}
-
-input {
-  width: 100%;
-  max-width: 100%;
-  padding: 12px;
-  margin-top: 5px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  font-size: 16px;
-  outline: none;
-  transition: border 0.2s ease;
-  background: #fafafa;
-}
-
-input:focus {
-  border: 1px solid #007aff;
-  background: #fff;
-}
-
-.description {
-  font-size: 13px;
-  color: #888;
-  margin-top: 3px;
-}
-
-button.calc {
-  width: 100%;
-  padding: 14px;
-  margin-top: 20px;
-  background: #007aff;
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-button.calc:hover {
-  background: #005fcb;
-}
-
-.results {
-  margin-top: 25px;
-  padding: 20px;
-  border-radius: 12px;
-  background: #f9f9f9;
-  border: 1px solid #ddd;
-}
-
-.results h2 {
-  margin-top: 0;
-  color: #007aff;
-  font-size: 1.4rem;
-  font-weight: 600;
-}
-
-p {
-  margin: 8px 0;
-  font-size: 15px;
-}
-
-.footer {
-  text-align: center;
-  font-size: 13px;
-  margin-top: 20px;
-  color: #777;
-}
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        background: linear-gradient(135deg, #f5f7fa, #e4ebf0);
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .container {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 95%;
+    }
+    h1 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    label {
+        font-weight: 500;
+        margin-top: 15px;
+        display: block;
+        color: #555;
+    }
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-size: 16px;
+        outline: none;
+        background: #fafafa;
+    }
+    input:focus {
+        border: 1px solid #007aff;
+        background: #fff;
+    }
+    .description {
+        font-size: 13px;
+        color: #888;
+        margin-top: 3px;
+    }
+    button {
+        width: 100%;
+        padding: 14px;
+        margin-top: 25px;
+        background: #007aff;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    button:hover {
+        background: #005fcb;
+    }
+    .results {
+        margin-top: 25px;
+        padding: 20px;
+        border-radius: 12px;
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+    }
+    .results h2 {
+        margin-top: 0;
+        color: #007aff;
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+    p {
+        margin: 8px 0;
+        font-size: 15px;
+    }
+    .footer {
+        text-align: center;
+        font-size: 13px;
+        margin-top: 20px;
+        color: #777;
+    }
+    .tabs {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    .tab {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 10px;
+        background: #eaeaea;
+        font-weight: 500;
+        transition: background 0.3s ease;
+    }
+    .tab.active {
+        background: #007aff;
+        color: white;
+    }
+    .tab-content {
+        display: none;
+    }
+    .tab-content.active {
+        display: block;
+    }
 </style>
 </head>
 <body>
 <div class="container">
-<h1>SWSL Sprayer Calibration</h1>
+    <h1>Sprayer Calibration</h1>
+    <div class="tabs">
+        <div class="tab active" onclick="switchTab('current')">Current GPA</div>
+        <div class="tab" onclick="switchTab('target')">Target GPA</div>
+    </div>
 
-<!-- Tabs -->
-<div class="tab">
-  <button class="tablinks active" onclick="openTab(event,'current')">Measure Output → GPA</button>
-  <button class="tablinks" onclick="openTab(event,'target')">Target GPA → Volume</button>
-</div>
+    <!-- CURRENT GPA CALCULATOR -->
+    <div id="current" class="tab-content active">
+        <label>Number of nozzles</label>
+        <input type="number" id="n_nozzles" value="8">
+        <div class="description">Total number of nozzles on your boom.</div>
 
-<!-- Current version -->
-<div id="current" class="tabcontent" style="display:block;">
-<label>Number of nozzles</label>
-<input type="number" id="n_nozzles" value="8">
-<div class="description">Enter the total number of nozzles on your boom. Example: 8 or 10.</div>
+        <label>Nozzle spacing (inches)</label>
+        <input type="number" id="spacing_in" value="20">
+        <div class="description">Distance between nozzles, center to center.</div>
 
-<label>Nozzle spacing (inches)</label>
-<input type="number" id="spacing_in" value="20">
-<div class="description">Distance from center of one nozzle to center of next nozzle in inches. Example: 20 inches.</div>
+        <label>Calibration distance (feet)</label>
+        <input type="number" id="calib_distance_ft" value="100">
+        <div class="description">Distance you spray during calibration.</div>
 
-<label>Calibration distance (feet)</label>
-<input type="number" id="calib_distance_ft" value="100">
-<div class="description">Length of the area you spray during calibration in feet. Walk and measure.</div>
+        <label>Calibration time (seconds)</label>
+        <input type="number" id="calib_time_sec" value="15">
+        <div class="description">Time to cover calibration distance.</div>
 
-<label>Calibration time (seconds)</label>
-<input type="number" id="calib_time_sec" value="15">
-<div class="description">Time in seconds to cover the calibration distance using a stopwatch.</div>
+        <label>Volume collected per nozzle (mL)</label>
+        <input type="number" step="0.1" id="volume_ml_per_nozzle" value="100">
+        <div class="description">Liquid collected from one nozzle during calibration.</div>
 
-<label>Volume collected from ONE nozzle (mL)</label>
-<input type="number" step="0.1" id="volume_ml_per_nozzle" value="100">
-<div class="description">Amount of spray collected from a single nozzle in milliliters (mL). Example: 100 mL.</div>
+        <button onclick="calculateCurrent()">Calculate</button>
 
-<button class="calc" onclick="calculate()">Calculate</button>
+        <div class="results" id="results-current" style="display:none;">
+            <h2>Results</h2>
+            <p><b>Ground speed:</b> <span id="speed"></span> mph</p>
+            <p><b>Nozzle flow rate:</b> <span id="gpm"></span> GPM per nozzle</p>
+            <p><b>Nozzle output (15 sec):</b> <span id="vol15"></span> gallons (<span id="vol15ml"></span> mL)</p>
+            <p><b>Total boom output (15 sec):</b> <span id="total15"></span> gallons (<span id="total15ml"></span> mL)</p>
+            <p><b>Gallons per acre (GPA):</b> <span id="gpa"></span></p>
+        </div>
+    </div>
 
-<div class="results" id="results" style="display:none;">
-<h2>Results</h2>
-<p><b>Ground speed:</b> <span id="speed"></span> mph</p>
-<p><b>Nozzle flow rate:</b> <span id="gpm"></span> gallons/minute per nozzle</p>
-<p><b>Nozzle output (15 sec):</b> <span id="vol15"></span> gallons (<span id="vol15ml"></span> mL)</p>
-<p><b>Total volume for boom (15 sec):</b> <span id="total15"></span> gallons (<span id="total15ml"></span> mL)</p>
-<p><b>Gallons per acre (GPA):</b> <span id="gpa"></span></p>
-</div>
-</div>
+    <!-- TARGET GPA CALCULATOR -->
+    <div id="target" class="tab-content">
+        <label>Desired GPA</label>
+        <input type="number" id="target_gpa" value="15">
+        <div class="description">The gallons per acre you want to achieve.</div>
 
-<!-- Target GPA version -->
-<div id="target" class="tabcontent">
-<label>Number of nozzles</label>
-<input type="number" id="n_nozzles_target" value="8">
-<div class="description">Enter the total number of nozzles on your boom. Example: 8 or 10.</div>
+        <label>Nozzle spacing (inches)</label>
+        <input type="number" id="spacing_in_target" value="20">
+        <div class="description">Distance between nozzles, center to center.</div>
 
-<label>Nozzle spacing (inches)</label>
-<input type="number" id="spacing_in_target" value="20">
-<div class="description">Distance from center of one nozzle to center of next nozzle in inches. Example: 20 inches.</div>
+        <label>Calibration distance (feet)</label>
+        <input type="number" id="calib_distance_ft_target" value="100">
+        <div class="description">Distance to walk/drive during calibration.</div>
 
-<label>Calibration distance (feet)</label>
-<input type="number" id="calib_distance_ft_target" value="100">
-<div class="description">Length of the area you plan to spray during calibration in feet. Walk and measure.</div>
+        <label>Calibration time (seconds)</label>
+        <input type="number" id="calib_time_sec_target" value="15">
+        <div class="description">Time to cover calibration distance.</div>
 
-<label>Target application rate (GPA)</label>
-<input type="number" step="0.1" id="target_gpa" value="">
-<div class="description">Enter desired spray rate in gallons per acre (GPA). Example: 10, 15, 20 GPA.</div>
+        <button onclick="calculateTarget()">Calculate</button>
 
-<button class="calc" onclick="calculateVolumeFromGPA()">Calculate required volume per nozzle</button>
-<p id="required_volume_result" class="results" style="display:none;"></p>
-</div>
+        <div class="results" id="results-target" style="display:none;">
+            <h2>Required Volume</h2>
+            <p><b>Ground speed:</b> <span id="speed-target"></span> mph</p>
+            <p><b>Nozzle flow rate needed:</b> <span id="gpm-target"></span> GPM</p>
+            <p><b>Required per nozzle (15 sec):</b> <span id="vol15-target"></span> gallons (<span id="vol15ml-target"></span> mL)</p>
+        </div>
+    </div>
 
-<div class="footer">
-<p>All calculations are local. No data is stored.</p>
-</div>
+    <div class="footer">
+        <p>All calculations are local. No data is stored.</p>
+    </div>
 </div>
 
 <script>
 const FT_PER_MILE = 5280.0;
 const SEC_PER_HOUR = 3600.0;
-const SQFT_PER_ACRE = 43560.0;
 const ML_TO_GALLON = 0.000264172;
+const GALLON_TO_ML = 3785.41;
 
-// Tab function
-function openTab(evt, tabName) {
-  const tabcontent = document.getElementsByClassName("tabcontent");
-  for (let i=0; i<tabcontent.length; i++) tabcontent[i].style.display="none";
-  const tablinks = document.getElementsByClassName("tablinks");
-  for (let i=0; i<tablinks.length; i++) tablinks[i].className = tablinks[i].className.replace(" active","");
-  document.getElementById(tabName).style.display="block";
-  evt.currentTarget.className += " active";
+// Tab switcher
+function switchTab(tabId) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    document.querySelector('.tab:nth-child(' + (tabId === 'current' ? 1 : 2) + ')').classList.add('active');
+    document.getElementById(tabId).classList.add('active');
 }
 
-// Current version calculation
-function calculate() {
+// Current GPA calculation
+function calculateCurrent() {
     const nNozzles = parseFloat(document.getElementById("n_nozzles").value);
     const spacingIn = parseFloat(document.getElementById("spacing_in").value);
     const distFt = parseFloat(document.getElementById("calib_distance_ft").value);
@@ -250,13 +227,13 @@ function calculate() {
     const speedMph = (distFt / timeSec) * (SEC_PER_HOUR / FT_PER_MILE);
     const gpm = volGalNozzle * (60 / timeSec);
     const vol15 = gpm * 0.25;
-    const vol15ml = vol15 / ML_TO_GALLON;
-    const boomWidthFt = (spacingIn * nNozzles) / 12.0;
+    const vol15ml = vol15 * GALLON_TO_ML;
     const totalGal15 = vol15 * nNozzles;
     const totalMl15 = vol15ml * nNozzles;
-    const gpa = (volGalNozzle * nNozzles * (SQFT_PER_ACRE / (distFt * boomWidthFt)));
+    const boomWidthFt = (spacingIn * nNozzles) / 12.0;
+    const gpa = (volGalNozzle * nNozzles * 43560) / (distFt * boomWidthFt);
 
-    document.getElementById("results").style.display = "block";
+    document.getElementById("results-current").style.display = "block";
     document.getElementById("speed").innerText = speedMph.toFixed(2);
     document.getElementById("gpm").innerText = gpm.toFixed(3);
     document.getElementById("vol15").innerText = vol15.toFixed(4);
@@ -267,27 +244,27 @@ function calculate() {
 }
 
 // Target GPA calculation
-function calculateVolumeFromGPA() {
-    const nNozzles = parseFloat(document.getElementById("n_nozzles_target").value);
+function calculateTarget() {
+    const gpaTarget = parseFloat(document.getElementById("target_gpa").value);
     const spacingIn = parseFloat(document.getElementById("spacing_in_target").value);
     const distFt = parseFloat(document.getElementById("calib_distance_ft_target").value);
-    const targetGPA = parseFloat(document.getElementById("target_gpa").value);
+    const timeSec = parseFloat(document.getElementById("calib_time_sec_target").value);
 
-    if (!nNozzles || !spacingIn || !distFt || !targetGPA) {
-        alert("Please enter all required values.");
+    if (!gpaTarget || !spacingIn || !distFt || !timeSec) {
+        alert("Please enter all values.");
         return;
     }
 
-    const boomWidthFt = (spacingIn * nNozzles) / 12.0;
-    const areaAcres = (distFt * boomWidthFt) / SQFT_PER_ACRE;
+    const speedMph = (distFt / timeSec) * (SEC_PER_HOUR / FT_PER_MILE);
+    const gpmNeeded = (gpaTarget * spacingIn * speedMph) / 5940.0;
+    const vol15 = gpmNeeded * 0.25;
+    const vol15ml = vol15 * GALLON_TO_ML;
 
-    const totalGal = targetGPA * areaAcres;
-    const volGalNozzle = totalGal / nNozzles;
-    const volMlNozzle = volGalNozzle / ML_TO_GALLON;
-
-    const resultElem = document.getElementById("required_volume_result");
-    resultElem.style.display="block";
-    resultElem.innerText = `To achieve ${targetGPA} GPA, collect ${volMlNozzle.toFixed(1)} mL from each nozzle.`;
+    document.getElementById("results-target").style.display = "block";
+    document.getElementById("speed-target").innerText = speedMph.toFixed(2);
+    document.getElementById("gpm-target").innerText = gpmNeeded.toFixed(3);
+    document.getElementById("vol15-target").innerText = vol15.toFixed(4);
+    document.getElementById("vol15ml-target").innerText = vol15ml.toFixed(1);
 }
 </script>
 </body>
