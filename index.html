@@ -13,12 +13,11 @@
   --text-secondary: #555;
   --accent: #D9782D; /* Changed to requested orange color */
   --accent-dark: #A85C20; /* Darker shade of the orange */
-  --accent-light: #FFE5D6; /* Very light orange for GPA buttons */
-  --border: #ccc;
-  --hover: #f0f0f0;
-  --title-color: #D9782D; /* Using the orange for title as well */
   --button-bg: #333; /* Dark button as requested */
   --button-hover: #555; /* Slightly lighter on hover */
+  --gpa-button: #f0f0f0; /* Very light grey for GPA buttons */
+  --gpa-button-active: #d0d0d0; /* Darker grey for active GPA button */
+  --gpa-button-hover: #e0e0e0; /* Hover color for GPA buttons */
 }
 
 /* General body styling - creates the overall page layout */
@@ -56,9 +55,8 @@ body {
   font-size: 2.4rem; 
   font-weight: 800; 
   margin: 0 0 8px; 
-  color: var(--title-color);
+  color: var(--accent);
   letter-spacing: -0.5px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
 .subtitle {
@@ -176,17 +174,10 @@ input:focus {
 
 /* Results heading style */
 .results-heading {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin: 25px 0 15px;
   color: var(--accent);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.results-heading:before {
-  content: "📊";
 }
 
 /* Grid layout for result cards */
@@ -207,7 +198,7 @@ input:focus {
   flex-direction: column; 
   align-items: flex-start; 
   transition: transform 0.15s ease;
-  border-left: 4px solid var(--accent-light);
+  border-left: 4px solid #e0e0e0;
 }
 
 /* Card hover effect */
@@ -249,7 +240,7 @@ input:focus {
   flex-wrap: wrap; 
 }
 
-/* Individual GPA button styling - using light orange */
+/* Individual GPA button styling - using light grey */
 .gpa-btn { 
   flex: 1; 
   padding: 8px 10px; 
@@ -257,7 +248,7 @@ input:focus {
   font-weight: 600; 
   border-radius: 10px; 
   border: 1px solid var(--border);
-  background: var(--accent-light); 
+  background: var(--gpa-button); 
   color: var(--text-primary); 
   cursor: pointer; 
   transition: all 0.2s ease; 
@@ -266,14 +257,13 @@ input:focus {
 
 /* GPA button hover effect */
 .gpa-btn:hover {
-  background: #FFD5BC;
+  background: var(--gpa-button-hover);
 }
 
-/* Active GPA button styling - using the orange color */
+/* Active GPA button styling - using darker grey */
 .gpa-btn.active {
-  background: var(--accent); 
-  color: white; 
-  border-color: var(--accent);
+  background: var(--gpa-button-active); 
+  border-color: #b0b0b0;
 }
 
 /* Action buttons container */
@@ -338,7 +328,7 @@ input:focus {
   }
 }
 
-/* Print styles */
+/* Print styles - only show active tab */
 @media print {
   body {
     background: white;
@@ -355,7 +345,12 @@ input:focus {
     display: none;
   }
   
+  /* Only show the active tab content */
   .tab-content {
+    display: none !important;
+  }
+  
+  .tab-content.active {
     display: block !important;
   }
   
@@ -413,7 +408,7 @@ input:focus {
 
     <!-- Results section for current GPA (hidden by default) -->
     <div class="results" id="results-current" style="display:none;">
-      <h2 class="results-heading">Calculation Results</h2>
+      <h2 class="results-heading">Results</h2>
       <div class="results-grid">
         <div class="result-card"><h3>Ground speed</h3><p><span id="speed_current"></span> mph</p></div>
         <div class="result-card"><h3>Nozzle flow rate</h3><p><span id="gpm_current"></span> GPM per nozzle</p></div>
@@ -426,7 +421,7 @@ input:focus {
       <!-- Action buttons for printing and resetting -->
       <div class="actions">
         <button class="secondary-btn" onclick="resetForm('current')">Reset Form</button>
-        <button class="calc-btn print-btn" onclick="window.print()">Print Results</button>
+        <button class="calc-btn print-btn" onclick="printActiveTab()">Print Results</button>
       </div>
     </div>
   </div>
@@ -464,7 +459,7 @@ input:focus {
 
     <!-- Results section for target GPA (hidden by default) -->
     <div class="results" id="results-target" style="display:none;">
-      <h2 class="results-heading">Calculation Results</h2>
+      <h2 class="results-heading">Results</h2>
       <div class="results-grid">
         <div class="result-card"><h3>Ground speed</h3><p><span id="speed_target"></span> mph</p></div>
         <div class="result-card"><h3>Required nozzle flow</h3><p><span id="gpm_target"></span> GPM per nozzle<br>(<span id="floz_min_target"></span> fl oz/min | <span id="ml_min_target"></span> mL/min)</p></div>
@@ -475,7 +470,7 @@ input:focus {
       <!-- Action buttons for printing and resetting -->
       <div class="actions">
         <button class="secondary-btn" onclick="resetForm('target')">Reset Form</button>
-        <button class="calc-btn print-btn" onclick="window.print()">Print Results</button>
+        <button class="calc-btn print-btn" onclick="printActiveTab()">Print Results</button>
       </div>
     </div>
   </div>
@@ -510,6 +505,11 @@ function switchTab(id){
     document.querySelectorAll('.tab')[1].classList.add('active');
     document.getElementById('target').classList.add('active');
   }
+}
+
+// Print only the active tab
+function printActiveTab() {
+  window.print();
 }
 
 // Reset form function
@@ -612,6 +612,10 @@ function setGPA(value, button){
   const input = document.getElementById('target_gpa');
   if(value !== null){ 
     input.value = value; // Set the input value
+  } else {
+    // For custom button, focus on the input field
+    input.focus();
+    input.select();
   }
   // Update button states
   document.querySelectorAll('.gpa-btn').forEach(btn => btn.classList.remove('active'));
