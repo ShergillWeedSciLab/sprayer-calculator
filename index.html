@@ -6,203 +6,345 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <style>
 :root {
-  --bg1:#f2f2f7;
-  --bg2:#e6e6f0;
-  --card:#ffffff;
-  --text:#1c1c1e;
-  --muted:#555;
-  --border:#ccc;
-  --accent-light:#d4f1d4;
-  --accent-dark:#388e3c;
-  --calc-btn:#333333;
-  --calc-btn-hover:#111111;
+  --bg1: #f2f4f6;
+  --bg2: #e1e6ea;
+  --card: #ffffff;
+  --text: #1c1c1e;
+  --muted: #555;
+  --border: #ccc;
+  --brand: #1E4D2B; /* Green */
+  --brand-light: #A6C8A9;
+  --btn-dark: #0F2B17;
 }
 
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
-  background:linear-gradient(135deg,var(--bg1),var(--bg2));
-  margin:0;padding:24px;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;box-sizing:border-box;color:var(--text);
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px;
+  box-sizing: border-box;
 }
 
-.container{
-  background:var(--card);width:100%;max-width:650px;padding:32px 28px;border-radius:20px;box-shadow:0 12px 28px rgba(0,0,0,0.08);
+.container {
+  background: var(--card);
+  width: 100%;
+  max-width: 680px;
+  padding: 36px 32px;
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
 }
 
-h1{
-  font-size:2rem;font-weight:700;text-align:center;margin-bottom:20px;color:var(--text);
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 24px;
+  color: var(--brand);
 }
 
-.tabs{display:flex;gap:8px;border-bottom:2px solid var(--border);margin-bottom:18px;}
-.tab{flex:1;text-align:center;padding:10px 12px;border:none;background:#f0f2f5;color:#333;border-radius:10px 10px 0 0;font-weight:600;cursor:pointer;transition:0.25s;}
-.tab:hover{background:#e0e0e0;}
-.tab.active{background:var(--accent-dark);color:white;}
+.tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 24px;
+}
 
-.tab-content{display:none;}
-.tab-content.active{display:block;}
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px 12px;
+  border: none;
+  background: var(--bg2);
+  color: var(--text);
+  border-radius: 10px 10px 0 0;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+.tab:hover { background: var(--brand-light); }
+.tab.active { background: var(--brand); color: white; }
 
-label{display:block;font-weight:600;margin-top:14px;color:#444;}
-input{width:100%;padding:12px;margin-top:6px;border:1px solid var(--border);border-radius:10px;font-size:16px;background:#fafafa;outline:none;transition:0.2s;box-sizing:border-box;}
-input:focus{border-color:var(--accent-dark);background:#fff;}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
 
-.description{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.35;}
+label {
+  display: block;
+  font-weight: 600;
+  margin-top: 14px;
+  color: var(--text);
+}
 
-.calc-btn{width:100%;padding:14px;margin-top:22px;background:var(--calc-btn);color:white;font-size:16px;font-weight:700;border:none;border-radius:12px;cursor:pointer;transition:0.25s;}
-.calc-btn:hover{background:var(--calc-btn-hover);}
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 16px;
+  background: #f9f9f9;
+  outline: none;
+  transition: border 0.2s ease, background 0.2s ease;
+  box-sizing: border-box;
+}
+input:focus { border-color: var(--brand); background: #fff; }
 
-.gpa-btn{padding:6px 12px;border:none;border-radius:8px;margin-right:6px;cursor:pointer;font-weight:600;background:var(--accent-light);transition:0.2s;}
-.gpa-btn.active{background:var(--accent-dark);color:white;}
+.description {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+  line-height: 1.35;
+}
 
-.results{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.result-card{background:#f9fafb;padding:12px 14px;border-radius:12px;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;}
-.result-card h3{margin:0;font-size:1rem;color:var(--accent-dark);}
-.result-card p{margin:4px 0 0;font-size:14px;}
+.calc-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 22px;
+  background: var(--btn-dark);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+.calc-btn:hover { background: var(--brand); }
 
-.footer{text-align:center;font-size:12.5px;color:var(--muted);margin-top:12px;}
-.footer + .footer{margin-top:4px;}
+.gpa-buttons {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+.gpa-button {
+  flex: 1;
+  padding: 8px 0;
+  background: var(--brand-light);
+  color: var(--text);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+.gpa-button.selected, .gpa-button:active { background: var(--brand); color: white; }
+
+.results {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.result-card {
+  background: var(--brand-light);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.result-card h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--btn-dark);
+}
+.result-card p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--btn-dark);
+}
+
+.footer {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 30px;
+}
+.footer + .footer { margin-top: 6px; }
+
 </style>
 </head>
 <body>
 <div class="container">
-<h1>SWSL SprayCal Pro</h1>
+  <h1>SWSL SprayCal Pro</h1>
 
-<div class="tabs">
-  <button class="tab active" onclick="switchTab('current')">Current GPA</button>
-  <button class="tab" onclick="switchTab('target')">Target GPA</button>
-</div>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('current')">Current GPA</button>
+    <button class="tab" onclick="switchTab('target')">Target GPA</button>
+  </div>
 
-<!-- CURRENT GPA -->
-<div id="current" class="tab-content active">
-<label>Number of nozzles</label>
-<input type="number" id="n_nozzles" value="4" min="1" />
-<div class="description">Count all nozzles installed on the boom. GPA is independent of nozzle count.</div>
+  <!-- CURRENT GPA CALCULATOR -->
+  <div id="current" class="tab-content active">
+    <label>Number of nozzles</label>
+    <input type="number" id="n_nozzles" value="4" min="1" />
+    <div class="description">Count all nozzles installed on the boom.</div>
 
-<label>Nozzle spacing (inches)</label>
-<input type="number" id="spacing_in" value="20" min="1" step="0.5" />
-<div class="description">Center-to-center distance between adjacent nozzles.</div>
+    <label>Nozzle spacing (inches)</label>
+    <input type="number" id="spacing_in" value="20" min="1" step="0.5" />
+    <div class="description">Center-to-center distance between adjacent nozzles.</div>
 
-<label>Calibration distance (feet)</label>
-<input type="number" id="calib_distance_ft" value="100" min="1" step="1" />
-<div class="description">Measured course length that you travel at application speed.</div>
+    <label>Calibration distance (feet)</label>
+    <input type="number" id="calib_distance_ft" value="100" min="1" step="1" />
+    <div class="description">Distance traveled to measure speed using stopwatch.</div>
 
-<label>Calibration time (seconds)</label>
-<input type="number" id="calib_time_sec" value="15" min="1" step="0.1" />
-<div class="description">Time required to travel the calibration distance.</div>
+    <label>Calibration time (seconds)</label>
+    <input type="number" id="calib_time_sec" value="15" min="1" step="0.1" />
+    <div class="description">Time taken to travel calibration distance. Defines ground speed.</div>
 
-<label>Per nozzle catch in 15 seconds (mL)</label>
-<input type="number" id="catch_15s_ml" value="150" min="0" step="0.1" />
-<div class="description">Run system at operating pressure for 15s per nozzle. <strong>Pro-Tip:</strong> average 3+ nozzles.</div>
+    <label>Per nozzle catch in 15 s (mL)</label>
+    <input type="number" id="catch_15s_ml" value="150" min="0" step="0.1" />
+    <div class="description">Run sprayer for 15 s and collect volume from one nozzle. Average at least 3 nozzles.</div>
 
-<button class="calc-btn" onclick="calculateCurrent()">Calculate Current GPA</button>
+    <button class="calc-btn" onclick="calculateCurrent()">Calculate</button>
 
-<div class="results" id="results-current" style="display:none;">
-  <div class="result-card"><h3>Ground speed</h3><p><span id="speed_current"></span> mph</p></div>
-  <div class="result-card"><h3>Nozzle flow rate</h3><p><span id="gpm_current"></span> fl oz/min</p></div>
-  <div class="result-card"><h3>Per nozzle in 15s</h3><p><span id="pernoz15_fl"></span> fl oz (<span id="pernoz15_ml"></span> mL)</p></div>
-  <div class="result-card"><h3>Gallons per acre (GPA)</h3><p><span id="gpa_current"></span></p></div>
-</div>
-</div>
+    <div class="results" id="results-current" style="display: none;">
+      <div class="result-card">
+        <h3>Ground speed</h3><p id="speed_current"></p>
+      </div>
+      <div class="result-card">
+        <h3>Nozzle flow rate</h3><p id="gpm_current"></p>
+      </div>
+      <div class="result-card">
+        <h3>Per nozzle in 15 s</h3><p id="pernoz15"></p>
+      </div>
+      <div class="result-card">
+        <h3>Gallons per acre (GPA)</h3><p id="gpa_current"></p>
+      </div>
+      <div class="result-card">
+        <h3>Total boom output</h3><p id="boom15"></p>
+      </div>
+      <div class="result-card">
+        <h3>Tank coverage (1 tank = 50 gal)</h3><p id="tanks_current"></p>
+      </div>
+    </div>
+  </div>
 
-<!-- TARGET GPA -->
-<div id="target" class="tab-content">
-<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
-  <button class="gpa-btn active" onclick="setTargetGPA(10)">10 GPA</button>
-  <button class="gpa-btn" onclick="setTargetGPA(15)">15 GPA</button>
-  <button class="gpa-btn" onclick="setTargetGPA(20)">20 GPA</button>
-  <button class="gpa-btn" onclick="setTargetGPA('custom')">Custom</button>
-</div>
-<label>Desired application rate (GPA)</label>
-<input type="number" id="target_gpa" value="15" min="0" step="0.1" />
-<div class="description">Select a predefined GPA or click <strong>Custom</strong> to type your desired value.</div>
+  <!-- TARGET GPA CALCULATOR -->
+  <div id="target" class="tab-content">
+    <label>Desired application rate (GPA)</label>
+    <div class="gpa-buttons">
+      <button class="gpa-button" onclick="selectGPA(10)">10</button>
+      <button class="gpa-button" onclick="selectGPA(15)">15</button>
+      <button class="gpa-button" onclick="selectGPA(20)">20</button>
+      <button class="gpa-button" onclick="customGPA()">Custom</button>
+    </div>
+    <input type="number" id="target_gpa" value="15" min="0" step="0.1" style="margin-top:6px;" />
 
-<label>Nozzle spacing (inches)</label>
-<input type="number" id="spacing_in_target" value="20" min="1" step="0.5" />
-<div class="description">Center-to-center distance between adjacent nozzles.</div>
+    <label>Nozzle spacing (inches)</label>
+    <input type="number" id="spacing_in_target" value="20" min="1" step="0.5" />
+    <label>Calibration distance (feet)</label>
+    <input type="number" id="calib_distance_ft_target" value="100" min="1" step="1" />
+    <label>Calibration time (seconds)</label>
+    <input type="number" id="calib_time_sec_target" value="15" min="1" step="0.1" />
 
-<label>Calibration distance (feet)</label>
-<input type="number" id="calib_distance_ft_target" value="100" min="1" step="1" />
-<div class="description">Measured course length at application speed.</div>
+    <button class="calc-btn" onclick="calculateTarget()">Calculate</button>
 
-<label>Calibration time (seconds)</label>
-<input type="number" id="calib_time_sec_target" value="15" min="1" step="0.1" />
-<div class="description">Time required to travel the calibration distance.</div>
+    <div class="results" id="results-target" style="display: none;">
+      <div class="result-card">
+        <h3>Ground speed</h3><p id="speed_target"></p>
+      </div>
+      <div class="result-card">
+        <h3>Nozzle flow rate</h3><p id="gpm_target"></p>
+      </div>
+      <div class="result-card">
+        <h3>Per nozzle in 15 s</h3><p id="req15"></p>
+      </div>
+      <div class="result-card">
+        <h3>Gallons per acre (GPA)</h3><p id="gpa_target"></p>
+      </div>
+    </div>
+  </div>
 
-<button class="calc-btn" onclick="calculateTarget()">Calculate Required Per Nozzle (15s)</button>
-
-<div class="results" id="results-target" style="display:none;">
-  <div class="result-card"><h3>Ground speed</h3><p><span id="speed_target"></span> mph</p></div>
-  <div class="result-card"><h3>Nozzle flow rate</h3><p><span id="gpm_target"></span> fl oz/min</p></div>
-  <div class="result-card"><h3>Per nozzle in 15s</h3><p><span id="req15_fl"></span> fl oz (<span id="req15_ml"></span> mL)</p></div>
-</div>
-</div>
-
-<div class="footer">All calculations run locally in your browser. No data is stored.</div>
-<div class="footer">Created by: Dr. Lovreet S. Shergill</div>
+  <div class="footer">All calculations run locally in your browser. No data is stored.</div>
+  <div class="footer">Created by: Dr. Lovreet S. Shergill</div>
 </div>
 
 <script>
-// Constants
-const FT_PER_MILE=5280, SEC_PER_HOUR=3600, ML_PER_GALLON=3785.41, FL_OZ_PER_GALLON=128, SPRAYER_CONST=5940;
+const FT_PER_MILE = 5280;
+const SEC_PER_HOUR = 3600;
+const ML_PER_GALLON = 3785.41;
+const ML_TO_FL_OZ = 0.033814;
+const SPRAYER_CONST = 5940;
 
-// Tabs
+// Tab switch
 function switchTab(id){
-  document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));
-  document.querySelectorAll(".tab-content").forEach(c=>c.classList.remove("active"));
-  if(id==='current'){document.querySelectorAll(".tab")[0].classList.add("active"); document.getElementById("current").classList.add("active");}
-  else{document.querySelectorAll(".tab")[1].classList.add("active"); document.getElementById("target").classList.add("active");}
-}
-
-// GPA Buttons
-function setTargetGPA(value){
-  document.querySelectorAll(".gpa-btn").forEach(btn=>btn.classList.remove("active"));
-  if(value==='custom'){
-    event.target.classList.add("active");
-    const input=document.getElementById("target_gpa");
-    input.focus(); input.select();
-  } else{
-    event.target.classList.add("active");
-    document.getElementById("target_gpa").value=value;
+  document.querySelectorAll(".tab").forEach(btn=>btn.classList.remove("active"));
+  document.querySelectorAll(".tab-content").forEach(el=>el.classList.remove("active"));
+  if(id==="current"){
+    document.querySelectorAll(".tab")[0].classList.add("active");
+    document.getElementById("current").classList.add("active");
+  } else {
+    document.querySelectorAll(".tab")[1].classList.add("active");
+    document.getElementById("target").classList.add("active");
   }
 }
 
-// Current GPA
-function calculateCurrent(){
-  const n=parseFloat(document.getElementById("n_nozzles").value),
-        spacing=parseFloat(document.getElementById("spacing_in").value),
-        dist=parseFloat(document.getElementById("calib_distance_ft").value),
-        t=parseFloat(document.getElementById("calib_time_sec").value),
-        catchML=parseFloat(document.getElementById("catch_15s_ml").value);
-  if([n,spacing,dist,t,catchML].some(x=>!isFinite(x)||x<=0)){alert("Enter valid positive values.");return;}
-  const mph=(dist/t)*(SEC_PER_HOUR/FT_PER_MILE),
-        catchGal=catchML/ML_PER_GALLON,
-        gpm=catchGal/0.25*FL_OZ_PER_GALLON,
-        gpa=(catchGal/0.25*60*spacing*n)/(mph*spacing/12*43560/n), // more precise per acre formula
-        catchFl=catchGal*FL_OZ_PER_GALLON;
-
-  document.getElementById("results-current").style.display="grid";
-  document.getElementById("speed_current").innerText=mph.toFixed(2);
-  document.getElementById("gpm_current").innerText=gpm.toFixed(1);
-  document.getElementById("pernoz15_fl").innerText=catchFl.toFixed(1);
-  document.getElementById("pernoz15_ml").innerText=catchML.toFixed(1);
-  document.getElementById("gpa_current").innerText=(gpa*n).toFixed(1); // total GPA
+// GPA buttons
+function selectGPA(val){
+  document.getElementById("target_gpa").value = val;
+  document.getElementById("target_gpa").focus();
+  document.querySelectorAll(".gpa-button").forEach(b=>b.classList.remove("selected"));
+  event.target.classList.add("selected");
+}
+function customGPA(){
+  document.getElementById("target_gpa").focus();
+  document.querySelectorAll(".gpa-button").forEach(b=>b.classList.remove("selected"));
+  event.target.classList.add("selected");
 }
 
-// Target GPA
+// Calculate Current
+function calculateCurrent(){
+  let nNoz = parseFloat(document.getElementById("n_nozzles").value);
+  let spacing = parseFloat(document.getElementById("spacing_in").value);
+  let dist = parseFloat(document.getElementById("calib_distance_ft").value);
+  let t = parseFloat(document.getElementById("calib_time_sec").value);
+  let catchML = parseFloat(document.getElementById("catch_15s_ml").value);
+
+  if([nNoz,spacing,dist,t,catchML].some(v=>!isFinite(v)||v<0)){ alert("Check inputs."); return;}
+
+  let mph = (dist/t)*(SEC_PER_HOUR/FT_PER_MILE);
+  let gpmNozzle = (catchML*ML_TO_FL_OZ)/0.25; // fl oz/min
+  let gpa = (gpmNozzle*SPRAYER_CONST)/(mph*spacing);
+
+  let perNozFlOz = catchML*ML_TO_FL_OZ;
+  let totalBoomFlOz = perNozFlOz*nNoz;
+  let totalBoomML = catchML*nNoz;
+  let tanksPerAcre = (gpa*1)/50; // assuming 50 gal tank for illustration
+
+  document.getElementById("results-current").style.display="grid";
+  document.getElementById("speed_current").innerText=mph.toFixed(2)+" mph";
+  document.getElementById("gpm_current").innerText=gpmNozzle.toFixed(2)+" fl oz/min";
+  document.getElementById("pernoz15").innerText=perNozFlOz.toFixed(2)+" fl oz ("+catchML.toFixed(1)+" mL)";
+  document.getElementById("gpa_current").innerText=gpa.toFixed(2);
+  document.getElementById("boom15").innerText=totalBoomFlOz.toFixed(2)+" fl oz ("+totalBoomML.toFixed(1)+" mL)";
+  document.getElementById("tanks_current").innerText=tanksPerAcre.toFixed(2);
+}
+
+// Calculate Target
 function calculateTarget(){
-  const target=parseFloat(document.getElementById("target_gpa").value),
-        spacing=parseFloat(document.getElementById("spacing_in_target").value),
-        dist=parseFloat(document.getElementById("calib_distance_ft_target").value),
-        t=parseFloat(document.getElementById("calib_time_sec_target").value);
-  if([target,spacing,dist,t].some(x=>!isFinite(x)||x<=0)){alert("Enter valid positive values.");return;}
-  const mph=(dist/t)*(SEC_PER_HOUR/FT_PER_MILE),
-        gpm=(target*mph*spacing)/SPRAYER_CONST*FL_OZ_PER_GALLON,
-        req15Fl=gpm*0.25,
-        req15ML=req15Fl*(ML_PER_GALLON/FL_OZ_PER_GALLON);
+  let targetGPA = parseFloat(document.getElementById("target_gpa").value);
+  let spacing = parseFloat(document.getElementById("spacing_in_target").value);
+  let dist = parseFloat(document.getElementById("calib_distance_ft_target").value);
+  let t = parseFloat(document.getElementById("calib_time_sec_target").value);
+
+  if([targetGPA,spacing,dist,t].some(v=>!isFinite(v)||v<0)){ alert("Check inputs."); return;}
+
+  let mph = (dist/t)*(SEC_PER_HOUR/FT_PER_MILE);
+  let gpmNeeded = (targetGPA*mph*spacing)/SPRAYER_CONST;
+  let req15FlOz = gpmNeeded*0.25;
+  let req15ML = req15FlOz/ML_TO_FL_OZ;
 
   document.getElementById("results-target").style.display="grid";
-  document.getElementById("speed_target").innerText=mph.toFixed(2);
-  document.getElementById("gpm_target").innerText=gpm.toFixed(1);
-  document.getElementById("req15_fl").innerText=req15Fl.toFixed(1);
-  document.getElementById("req15_ml").innerText=req15ML.toFixed(1);
+  document.getElementById("speed_target").innerText=mph.toFixed(2)+" mph";
+  document.getElementById("gpm_target").innerText=gpmNeeded.toFixed(2)+" fl oz/min";
+  document.getElementById("req15").innerText=req15FlOz.toFixed(2)+" fl oz ("+req15ML.toFixed(1)+" mL)";
+  document.getElementById("gpa_target").innerText=targetGPA.toFixed(2);
 }
 </script>
 </body>
