@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sprayer Calibration Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Apple-style design */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #e4ebf0);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 90%;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-align: center;
+      color: #1c1c1e;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: 500;
+      margin-top: 15px;
+      display: block;
+      color: #555;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+      transition: border 0.2s ease;
+      background: #fafafa;
+    }
+
+    input:focus {
+      border: 1px solid #007aff;
+      background: #fff;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 25px;
+      background: #007aff;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #005fcb;
+    }
+
+    .results {
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 12px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+    }
+
+    .results h2 {
+      margin-top: 0;
+      color: #007aff;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 8px 0;
+      font-size: 15px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      margin-top: 20px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Sprayer Calibration</h1>
+
+    <label>Number of nozzles</label>
+    <input type="number" id="n_nozzles" value="8">
+
+    <label>Nozzle spacing (inches)</label>
+    <input type="number" id="spacing_in" value="20">
+
+    <label>Calibration distance (feet)</label>
+    <input type="number" id="calib_distance_ft" value="200">
+
+    <label>Calibration time (seconds)</label>
+    <input type="number" id="calib_time_sec" value="24">
+
+    <label>Total gallons collected (all nozzles)</label>
+    <input type="number" step="0.0001" id="volume_gal_total" value="0.8">
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div class="results" id="results" style="display:none;">
+      <h2>Results</h2>
+      <p><b>Ground speed:</b> <span id="speed"></span> mph</p>
+      <p><b>Nozzle flow rate:</b> <span id="gpm"></span> gallons/minute per nozzle</p>
+      <p><b>Nozzle output (15 sec):</b> <span id="vol15"></span> gallons (<span id="vol15ml"></span> mL)</p>
+      <p><b>Gallons per acre (GPA):</b> <span id="gpa"></span></p>
+    </div>
+
+    <div class="footer">
+      <p>All calculations are local. No data is stored.</p>
+    </div>
+  </div>
+
+  <script>
+    const FT_PER_MILE = 5280.0;
+    const SEC_PER_HOUR = 3600.0;
+    const SQFT_PER_ACRE = 43560.0;
+
+    function calculate() {
+      const nNozzles = parseFloat(document.getElementById("n_nozzles").value);
+      const spacingIn = parseFloat(document.getElementById("spacing_in").value);
+      const distFt = parseFloat(document.getElementById("calib_distance_ft").value);
+      const timeSec = parseFloat(document.getElementById("calib_time_sec").value);
+      const totalGal = parseFloat(document.getElementById("volume_gal_total").value);
+
+      if (!nNozzles || !spacingIn || !distFt || !timeSec || !totalGal) {
+        alert("Please enter all values.");
+        return;
+      }
+
+      const speedMph = (distFt / timeSec) * (SEC_PER_HOUR / FT_PER_MILE);
+      const volPerNozzle = totalGal / nNozzles;
+      const gpm = volPerNozzle * (60.0 / timeSec);
+      const vol15 = gpm * 0.25;
+      const vol15ml = vol15 * 3785.411784;
+      const boomWidthFt = (spacingIn * nNozzles) / 12.0;
+      const areaAcres = (distFt * boomWidthFt) / SQFT_PER_ACRE;
+      const gpa = totalGal / areaAcres;
+
+      document.getElementById("results").style.display = "block";
+      document.getElementById("speed").innerText = speedMph.toFixed(2);
+      document.getElementById("gpm").innerText = gpm.toFixed(3);
+      document.getElementById("vol15").innerText = vol15.toFixed(4);
+      document.getElementById("vol15ml").innerText = vol15ml.toFixed(1);
+      document.getElementById("gpa").innerText = gpa.toFixed(2);
+    }
+  </script>
+</body>
+</html>
