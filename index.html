@@ -6,17 +6,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <style>
 :root {
-  --bg1: #f5f5f7;
-  --bg2: #e3e3e5;
-  --card: #ffffff;
-  --text: #222222;
+  --bg1: #f0f0f3;
+  --bg2: #e8ebef;
+  --card-bg: #ffffff;
+  --text: #1c1c1e;
   --muted: #555555;
   --border: #d1d1d6;
-  --accent1: #ff7f50;
+  --accent1: #ff9f7f;
   --accent2: #7fd1b9;
-  --accent3: #f5c469;
+  --accent3: #ffd97f;
   --button-bg: #4c4c4f;
   --button-hover: #636366;
+  --result-bg1: #fff8f0;
+  --result-bg2: #f0fff8;
+  --result-bg3: #fffef0;
 }
 
 body {
@@ -33,19 +36,19 @@ body {
 }
 
 .container {
-  background: var(--card);
+  background: var(--card-bg);
   width: 100%;
-  max-width: 650px;
-  padding: 36px 32px;
-  border-radius: 24px;
-  box-shadow: 0 16px 32px rgba(0,0,0,0.08);
+  max-width: 680px;
+  padding: 40px 36px;
+  border-radius: 28px;
+  box-shadow: 0 18px 36px rgba(0,0,0,0.08);
 }
 
 h1 {
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   font-weight: 700;
   text-align: center;
-  margin: 0 0 24px;
+  margin: 0 0 28px;
   color: var(--text);
   letter-spacing: 1px;
 }
@@ -53,17 +56,17 @@ h1 {
 .tabs {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .tab {
   flex: 1;
   text-align: center;
-  padding: 12px 0;
+  padding: 14px 0;
   border: none;
   background: var(--border);
   color: var(--text);
-  border-radius: 12px 12px 0 0;
+  border-radius: 14px 14px 0 0;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.25s ease;
@@ -77,18 +80,18 @@ h1 {
 label {
   display: block;
   font-weight: 600;
-  margin-top: 14px;
+  margin-top: 16px;
   color: var(--text);
 }
 
 input {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   margin-top: 6px;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 14px;
   font-size: 16px;
-  background: #f9f9f9;
+  background: #fafafa;
   outline: none;
   transition: border 0.2s ease, background 0.2s ease;
   box-sizing: border-box;
@@ -102,19 +105,19 @@ input:focus {
   font-size: 13px;
   color: var(--muted);
   margin-top: 4px;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .calc-btn {
   width: 100%;
-  padding: 14px;
-  margin-top: 22px;
+  padding: 16px;
+  margin-top: 24px;
   background: var(--button-bg);
   color: white;
   font-size: 16px;
   font-weight: 700;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   cursor: pointer;
   transition: background 0.25s ease;
 }
@@ -123,49 +126,54 @@ input:focus {
 .gpa-buttons {
   display: flex;
   gap: 6px;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 .gpa-button {
   flex: 1;
   padding: 8px 0;
   background: var(--accent3);
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
   font-weight: 600;
   transition: background 0.2s ease;
 }
-.gpa-button:hover { background: #e0b258; }
+.gpa-button:hover { background: #e0c056; }
 
 .results {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-top: 22px;
+  gap: 16px;
+  margin-top: 24px;
 }
 
 .result-card {
-  padding: 16px 20px;
-  border-radius: 16px;
-  background: #ffffff;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  padding: 18px 24px;
+  border-radius: 20px;
+  background: var(--result-bg1);
   border-left: 6px solid var(--accent1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
+.result-card:nth-child(2) { background: var(--result-bg2); border-left-color: var(--accent2);}
+.result-card:nth-child(3) { background: var(--result-bg3); border-left-color: var(--accent3);}
 .result-card h2 {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   font-size: 1.25rem;
-  color: var(--accent2);
+  color: var(--text);
 }
 .result-card p {
-  margin: 4px 0;
+  margin: 0;
   font-size: 15px;
+  color: var(--text);
 }
 
 .footer {
   text-align: center;
   font-size: 13px;
   color: var(--muted);
-  margin-top: 24px;
+  margin-top: 28px;
 }
 .footer + .footer { margin-top: 8px; }
 </style>
@@ -195,7 +203,7 @@ input:focus {
 
   <label>Calibration time for that distance (seconds)</label>
   <input type="number" id="calib_time_sec" value="15" min="1" step="0.1" />
-  <div class="description">Time required to travel the calibration distance at application speed. Use a stopwatch. This defines ground speed for the calculations.</div>
+  <div class="description">Time required to travel the calibration distance at application speed. Use a stopwatch.</div>
 
   <label>Per nozzle catch in 15 seconds (mL)</label>
   <input type="number" id="catch_15s_ml" value="150" min="0" step="0.1" />
@@ -247,10 +255,10 @@ input:focus {
 
 <div class="footer">All calculations run locally in your browser. No data is stored.</div>
 <div class="footer">Created by: Dr. Lovreet S. Shergill</div>
+</div>
 
 <script>
-const FT_PER_MILE=5280,SEC_PER_HOUR=3600,ML_PER_GALLON=3785.41,ML_TO_GALLON=0.000264172,SPRAYER_CONST=5940;
-const FL_OZ_PER_GAL=128;
+const FT_PER_MILE=5280.0, SEC_PER_HOUR=3600.0, ML_PER_GALLON=3785.41, ML_TO_GALLON=0.000264172, SPRAYER_CONST=5940.0, FL_OZ_PER_GAL=128;
 
 function switchTab(id){
   document.querySelectorAll(".tab").forEach(btn=>btn.classList.remove("active"));
@@ -261,19 +269,19 @@ function switchTab(id){
 
 function calculateCurrent(){
   const nNoz=parseFloat(document.getElementById("n_nozzles").value),
-  spacingIn=parseFloat(document.getElementById("spacing_in").value),
-  distFt=parseFloat(document.getElementById("calib_distance_ft").value),
-  timeSec=parseFloat(document.getElementById("calib_time_sec").value),
-  catch15mL=parseFloat(document.getElementById("catch_15s_ml").value);
-  if(!isFinite(nNoz)||!isFinite(spacingIn)||!isFinite(distFt)||!isFinite(timeSec)||!isFinite(catch15mL)||nNoz<=0||spacingIn<=0||distFt<=0||timeSec<=0||catch15mL<0){alert("Please provide valid positive inputs for all fields.");return;}
+        spacingIn=parseFloat(document.getElementById("spacing_in").value),
+        distFt=parseFloat(document.getElementById("calib_distance_ft").value),
+        timeSec=parseFloat(document.getElementById("calib_time_sec").value),
+        catch15mL=parseFloat(document.getElementById("catch_15s_ml").value);
+  if(!isFinite(nNoz)||!isFinite(spacingIn)||!isFinite(distFt)||!isFinite(timeSec)||!isFinite(catch15mL)||nNoz<=0||spacingIn<=0||distFt<=0||timeSec<=0||catch15mL<0){alert("Please provide valid positive inputs."); return;}
   const mph=(distFt/timeSec)*(SEC_PER_HOUR/FT_PER_MILE),
-  catch15_gal=catch15mL*ML_TO_GALLON,
-  gpm_per_nozzle=catch15_gal/0.25,
-  gpa=(gpm_per_nozzle*SPRAYER_CONST)/(mph*spacingIn),
-  boom_15_gal=catch15_gal*nNoz,
-  boom_15_ml=catch15mL*nNoz,
-  per15_fl=catch15_gal*FL_OZ_PER_GAL,
-  boom15_fl=boom_15_gal*FL_OZ_PER_GAL;
+        catch15_gal=catch15mL*ML_TO_GALLON,
+        gpm_per_nozzle=catch15_gal/0.25,
+        gpa=(gpm_per_nozzle*SPRAYER_CONST)/(mph*spacingIn),
+        boom_15_gal=catch15_gal*nNoz,
+        boom_15_ml=catch15mL*nNoz,
+        per15_fl=catch15_gal*FL_OZ_PER_GAL,
+        boom15_fl=boom_15_gal*FL_OZ_PER_GAL;
   document.getElementById("results-current").style.display="block";
   document.getElementById("speed_current").innerText=mph.toFixed(2);
   document.getElementById("gpm_current").innerText=gpm_per_nozzle.toFixed(3);
@@ -286,15 +294,15 @@ function calculateCurrent(){
 
 function calculateTarget(){
   const targetGPA=parseFloat(document.getElementById("target_gpa").value),
-  spacingIn=parseFloat(document.getElementById("spacing_in_target").value),
-  distFt=parseFloat(document.getElementById("calib_distance_ft_target").value),
-  timeSec=parseFloat(document.getElementById("calib_time_sec_target").value);
-  if(!isFinite(targetGPA)||!isFinite(spacingIn)||!isFinite(distFt)||!isFinite(timeSec)||targetGPA<0||spacingIn<=0||distFt<=0||timeSec<=0){alert("Please provide valid positive inputs for all fields.");return;}
+        spacingIn=parseFloat(document.getElementById("spacing_in_target").value),
+        distFt=parseFloat(document.getElementById("calib_distance_ft_target").value),
+        timeSec=parseFloat(document.getElementById("calib_time_sec_target").value);
+  if(!isFinite(targetGPA)||!isFinite(spacingIn)||!isFinite(distFt)||!isFinite(timeSec)||targetGPA<0||spacingIn<=0||distFt<=0||timeSec<=0){alert("Please provide valid positive inputs."); return;}
   const mph=(distFt/timeSec)*(SEC_PER_HOUR/FT_PER_MILE),
-  gpm_needed=(targetGPA*mph*spacingIn)/SPRAYER_CONST,
-  req15_gal=gpm_needed*0.25,
-  req15_ml=req15_gal*ML_PER_GALLON,
-  req15_fl=req15_gal*FL_OZ_PER_GAL;
+        gpm_needed=(targetGPA*mph*spacingIn)/SPRAYER_CONST,
+        req15_gal=gpm_needed*0.25,
+        req15_ml=req15_gal*ML_PER_GALLON,
+        req15_fl=req15_gal*FL_OZ_PER_GAL;
   document.getElementById("results-target").style.display="block";
   document.getElementById("speed_target").innerText=mph.toFixed(2);
   document.getElementById("gpm_target").innerText=gpm_needed.toFixed(3);
