@@ -225,6 +225,12 @@ input:focus {
   font-weight: 500;
 }
 
+/* Highlight class for important values - orange and bold */
+.highlight-orange {
+  color: var(--accent);
+  font-weight: 700;
+}
+
 /* Footer text styling */
 .footer { 
   text-align: center; 
@@ -392,7 +398,7 @@ input:focus {
     <!-- Input for nozzle spacing -->
     <label>Nozzle spacing (inches)</label>
     <input type="number" id="spacing_in" value="20" min="1" step="0.5" />
-    <div class="description">Center-to-center distance between adjacent nozzles in inches OR Enter spray width for single nozzle. </div>
+    <div class="description">Center-to-center distance between adjacent nozzles in inches. Enter spray width for single nozzle </div>
 
     <!-- Input for calibration distance -->
     <label>Calibration distance (feet)</label>
@@ -419,8 +425,8 @@ input:focus {
         <div class="result-card"><h3>Ground speed</h3><p><span id="speed_current"></span> mph</p></div>
         <div class="result-card"><h3>Nozzle flow rate</h3><p><span id="ml_min_current"></span> mL/min</p></div>
         <div class="result-card"><h3>Per nozzle in 15s</h3><p><span id="pernoz15_ml"></span> mL</p></div>
-        <div class="result-card"><h3>Gallons per acre (GPA)</h3><p><span id="gpa_current"></span></p></div>
-        <div class="result-card"><h3>Tanks per acre (50 gal tank)</h3><p><span id="tanks_per_acre_current"></span></p></div>
+        <div class="result-card"><h3>Gallons per acre (GPA)</h3><p><span class="highlight-orange" id="gpa_current"></span></p></div>
+        <div class="result-card"><h3>Tanks per acre<br>(1 tank = 50 gal)</h3><p><span id="tanks_per_acre_current"></span></p></div>
       </div>
       
       <!-- Action buttons for printing and resetting - single line -->
@@ -447,7 +453,7 @@ input:focus {
     <!-- Input for nozzle spacing in target tab -->
     <label>Nozzle spacing (inches)</label>
     <input type="number" id="spacing_in_target" value="20" min="1" step="0.5" />
-    <div class="description">Center-to-center distance between adjacent nozzles in inches OR Enter spray width for single nozzle.</div>
+    <div class="description">Center-to-center distance between adjacent nozzles in inches.</div>
 
     <!-- Input for calibration distance in target tab -->
     <label>Calibration distance (feet)</label>
@@ -467,8 +473,8 @@ input:focus {
       <h2 class="results-heading">Results</h2>
       <div class="results-grid">
         <div class="result-card"><h3>Ground speed</h3><p><span id="speed_target"></span> mph</p></div>
-        <div class="result-card"><h3>Required flow per nozzle</h3><p><strong><span id="req15_ml"></span> mL in 15s</strong><br>(<span id="ml_min_target"></span> mL/min)</p></div>
-        <div class="result-card"><h3>Tanks per acre (50 gal tank)</h3><p><span id="tanks_per_acre_target"></span></p></div>
+        <div class="result-card"><h3>Required flow per nozzle</h3><p><span class="highlight-orange"><span id="req15_ml"></span> mL in 15s</span><br>(<span id="ml_min_target"></span> mL/min)</p></div>
+        <div class="result-card"><h3>Tanks per acre<br>(1 tank = 50 gal)</h3><p><span id="tanks_per_acre_target"></span></p></div>
       </div>
       
       <!-- Action buttons for printing and resetting - single line -->
