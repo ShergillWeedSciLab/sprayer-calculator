@@ -180,12 +180,9 @@
       <label>Per nozzle catch in 15 seconds (mL)</label>
       <input type="number" id="catch_15s_ml" value="150" min="0" step="0.1" />
       <div class="description">
-        With the sprayer stationary, run the system at the operating pressure and collect output from one nozzle for exactly 15 seconds. Enter that volume in milliliters. 
-      </div>
-	<div>
-	Pro-Tip: use an average volume from at least 3 nozzles. 
+        With the sprayer stationary, run the system at the operating pressure and collect output from one nozzle for exactly 15 seconds. Enter that volume in milliliters. <strong>Pro-Tip:</strong> use an average volume from at least 3 nozzles. 
 	</div>
-      <button class="calc-btn" onclick="calculateCurrent()">Calculate <strong>Current GPA</strong></button>
+      <button class="calc-btn" onclick="calculateCurrent()">Calculate Current GPA</button>
 
       <div class="results" id="results-current" style="display: none;">
         <h2>Results</h2>
@@ -197,6 +194,8 @@
       </div>
     </div>
 
+
+
     <!-- TARGET GPA CALCULATOR -->
     <div id="target" class="tab-content">
       <label>Desired application rate (GPA)</label>
@@ -206,15 +205,15 @@
       </div>
 
       <label>Nozzle spacing (inches)</label>
-      <input type="number" id="spacing_in_target" value="20" min="1" step="0.1" />
+      <input type="number" id="spacing_in_target" value="20" min="1" step="0.5" />
       <div class="description">
         Center-to-center distance between adjacent nozzles in inches.
       </div>
 
       <label>Calibration distance (feet)</label>
-      <input type="number" id="calib_distance_ft_target" value="100" min="1" step="0.1" />
+      <input type="number" id="calib_distance_ft_target" value="100" min="1" step="1" />
       <div class="description">
-	Measured course length that you travel at application speed. Use a measuring tape or flags.
+	Measured course length that you travel at application speed. Use a measuring tape & flags.
       </div>
 
       <label>Calibration time for that distance (seconds)</label>
@@ -223,7 +222,7 @@
         Time required to travel the calibration distance at application speed. Use a stopwatch. This defines ground speed for the calculations.
       </div>
 
-      <button class="calc-btn" onclick="calculateTarget()">Calculate <strong>Volume Required Per Nozzle</strong> (15s Catch)</button>
+      <button class="calc-btn" onclick="calculateTarget()">Calculate Volume Required Per Nozzle (15s Catch)</button>
 
       <div class="results" id="results-target" style="display: none;">
         <h2>Required Volume</h2>
