@@ -134,26 +134,26 @@
     font-size: 15px;
   }
 
+  .gpa-buttons button {
+    padding: 8px 12px;
+    margin: 4px 0;
+    font-weight: 600;
+    background: #e0e0e0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.25s ease;
+  }
+  .gpa-buttons button:hover {
+    background: var(--brand);
+    color: white;
+  }
+
   .footer {
     text-align: center;
     font-size: 12.5px;
     color: var(--muted);
     margin-top: 18px;
-  }
-
-  .gpa-buttons button {
-    padding: 8px 14px;
-    border-radius: 8px;
-    border: 1px solid var(--brand);
-    background: #fff;
-    color: var(--brand);
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.2s, color 0.2s;
-  }
-  .gpa-buttons button:hover {
-    background: var(--brand);
-    color: #fff;
   }
 </style>
 </head>
@@ -170,33 +170,26 @@
     <div id="current" class="tab-content active">
       <label>Number of nozzles</label>
       <input type="number" id="n_nozzles" value="4" min="1" />
-      <div class="description">
-        Count all nozzles installed on the boom. GPA itself is independent of nozzle count.
-      </div>
+      <div class="description">Count all nozzles installed on the boom.</div>
 
       <label>Nozzle spacing (inches)</label>
       <input type="number" id="spacing_in" value="20" min="1" step="0.5" />
-      <div class="description">
-        Center-to-center distance between adjacent nozzles in inches.
-      </div>
+      <div class="description">Center-to-center distance between adjacent nozzles in inches.</div>
 
       <label>Calibration distance (feet)</label>
       <input type="number" id="calib_distance_ft" value="100" min="1" step="1" />
-      <div class="description">
-        Measured course length that you travel at application speed. Use a measuring tape & flags.
-      </div>
+      <div class="description">Measured course length that you travel at application speed.</div>
 
       <label>Calibration time for that distance (seconds)</label>
       <input type="number" id="calib_time_sec" value="15" min="1" step="0.1" />
-      <div class="description">
-        Time required to travel the calibration distance at application speed. Use a stopwatch. This defines ground speed for the calculations.
-      </div>
+      <div class="description">Time required to travel the calibration distance at application speed.</div>
 
       <label>Per nozzle catch in 15 seconds (mL)</label>
       <input type="number" id="catch_15s_ml" value="150" min="0" step="0.1" />
       <div class="description">
-        With the sprayer stationary, run the system at the operating pressure and collect output from one nozzle for exactly 15 seconds. Enter that volume in milliliters. <strong>Pro-Tip:</strong> use an average volume from at least 3 nozzles. 
+        Run the system for exactly 15 seconds and collect output from one nozzle. <strong>Pro-Tip:</strong> average from 3 nozzles.
       </div>
+
       <button class="calc-btn" onclick="calculateCurrent()">Calculate Current GPA</button>
 
       <div class="results" id="results-current" style="display: none;">
@@ -212,35 +205,27 @@
     <!-- TARGET GPA CALCULATOR -->
     <div id="target" class="tab-content">
       <label>Desired application rate (GPA)</label>
-      <div class="gpa-buttons" style="margin-top: 6px; display: flex; gap: 10px; flex-wrap: wrap;">
-        <button type="button" onclick="setTargetGPA(10)">10 GPA</button>
-        <button type="button" onclick="setTargetGPA(15)">15 GPA</button>
-        <button type="button" onclick="setTargetGPA(20)">20 GPA</button>
+      <div class="gpa-buttons">
+        <button type="button" onclick="selectGPA(10)">10 GPA</button>
+        <button type="button" onclick="selectGPA(15)">15 GPA</button>
+        <button type="button" onclick="selectGPA(20)">20 GPA</button>
       </div>
-      <div style="margin-top: 6px;">
-        <input type="number" id="target_gpa_custom" placeholder="Custom GPA" min="0" step="0.1" oninput="setTargetGPA(this.value)" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border);">
-      </div>
-      <div class="description">
-        Click one of the preset buttons or enter a custom value for gallons per acre.
-      </div>
+      <input type="number" id="target_gpa_custom" placeholder="Custom GPA" min="0" step="0.1"
+             oninput="selectGPA(this.value)" style="margin-top: 6px; width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border);">
+
+      <input type="hidden" id="target_gpa" value="15">
 
       <label>Nozzle spacing (inches)</label>
       <input type="number" id="spacing_in_target" value="20" min="1" step="0.5" />
-      <div class="description">
-        Center-to-center distance between adjacent nozzles in inches.
-      </div>
+      <div class="description">Center-to-center distance between adjacent nozzles in inches.</div>
 
       <label>Calibration distance (feet)</label>
       <input type="number" id="calib_distance_ft_target" value="100" min="1" step="1" />
-      <div class="description">
-	Measured course length that you travel at application speed. Use a measuring tape & flags.
-      </div>
+      <div class="description">Measured course length that you travel at application speed.</div>
 
       <label>Calibration time for that distance (seconds)</label>
       <input type="number" id="calib_time_sec_target" value="15" min="1" step="0.1" />
-      <div class="description">
-        Time required to travel the calibration distance at application speed. Use a stopwatch. This defines ground speed for the calculations.
-      </div>
+      <div class="description">Time required to travel the calibration distance at application speed.</div>
 
       <button class="calc-btn" onclick="calculateTarget()">Calculate Volume Required Per Nozzle (15s Catch)</button>
 
@@ -253,15 +238,12 @@
     </div>
 
     <div class="footer">
-      All calculations run locally in your browser. No data is stored.
-    </div>
-    <div class="footer">
+      All calculations run locally in your browser. No data is stored.<br>
       Created by: Dr. Lovreet S. Shergill
     </div>
   </div>
 
 <script>
-  // Unit constants
   const FT_PER_MILE = 5280.0;
   const SEC_PER_HOUR = 3600.0;
   const ML_PER_GALLON = 3785.41;
@@ -310,12 +292,11 @@
     document.getElementById("gpa_current").innerText = gpa.toFixed(2);
   }
 
-  function setTargetGPA(value) {
+  function selectGPA(value) {
     const gpa = parseFloat(value);
     if (!isFinite(gpa) || gpa < 0) return;
     document.getElementById("target_gpa").value = gpa;
     document.getElementById("target_gpa_custom").value = gpa;
-    calculateTarget();
   }
 
   function calculateTarget() {
