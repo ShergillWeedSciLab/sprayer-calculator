@@ -191,23 +191,22 @@ input:focus {
   margin-top: 4px; 
 }
 
-/* Individual result card styling */
+/* Individual result card styling - updated with shadow instead of left border */
 .result-card { 
   background: #fff; 
   border-radius: 14px; 
   padding: 12px 14px; 
-  box-shadow: 0 6px 12px rgba(0,0,0,0.07);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
   display: flex; 
   flex-direction: column; 
   align-items: flex-start; 
-  transition: transform 0.15s ease;
-  border-left: 4px solid #e0e0e0;
+  transition: all 0.25s ease;
 }
 
-/* Card hover effect */
+/* Card hover effect - enhanced shadow */
 .result-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
 }
 
 /* Card title styling */
@@ -269,14 +268,14 @@ input:focus {
   border-color: #b0b0b0;
 }
 
-/* Action buttons container - single line */
+/* Action buttons container - single line with equal widths */
 .actions {
   display: flex;
   gap: 12px;
   margin-top: 20px;
 }
 
-/* Secondary button styling */
+/* Secondary button styling - equal height to match print button */
 .secondary-btn {
   padding: 12px 20px;
   background: #f0f0f0;
@@ -288,17 +287,24 @@ input:focus {
   transition: all 0.2s ease;
   flex: 1;
   white-space: nowrap;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .secondary-btn:hover {
   background: #e0e0e0;
 }
 
-/* Print button styling */
+/* Print button styling - override calc-btn properties for consistent height */
 .print-btn {
   background: #555;
+  color: white;
   margin-top: 0;
   flex: 1;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 0;
 }
 
 .print-btn:hover {
@@ -404,7 +410,7 @@ input:focus {
     <div class="description">Run system for 15s, collect output from one nozzle in mL. <strong>Pro-Tip:</strong> average from 3 nozzles.</div>
 
     <!-- Calculate button for current GPA -->
-    <button class="calc-btn" onclick="calculateCurrent()">Calculate Current Volume</button>
+    <button class="calc-btn" onclick="calculateCurrent()">Analyze Current Setup</button>
 
     <!-- Results section for current GPA (hidden by default) -->
     <div class="results" id="results-current" style="display:none;">
@@ -454,14 +460,14 @@ input:focus {
     <div class="description">Time required to travel calibration distance. Defines ground speed.</div>
 
     <!-- Calculate button for target GPA -->
-    <button class="calc-btn" onclick="calculateTarget()">Calculate Volume Required</button>
+    <button class="calc-btn" onclick="calculateTarget()">Calculate Target Requirements</button>
 
     <!-- Results section for target GPA (hidden by default) -->
     <div class="results" id="results-target" style="display:none;">
       <h2 class="results-heading">Results</h2>
       <div class="results-grid">
         <div class="result-card"><h3>Ground speed</h3><p><span id="speed_target"></span> mph</p></div>
-        <div class="result-card"><h3>Required nozzle flow</h3><p><span id="ml_min_target"></span> mL/min<br>(<span id="req15_ml"></span> mL in 15s)</p></div>
+        <div class="result-card"><h3>Required flow per nozzle</h3><p><strong><span id="req15_ml"></span> mL in 15s</strong><br>(<span id="ml_min_target"></span> mL/min)</p></div>
         <div class="result-card"><h3>Tanks per acre (50 gal tank)</h3><p><span id="tanks_per_acre_target"></span></p></div>
       </div>
       
