@@ -156,19 +156,19 @@
       <label>Number of nozzles</label>
       <input type="number" id="n_nozzles" value="8" min="1" />
       <div class="description">
-        Count all nozzles installed on the boom. This is used to report total boom output over 15 seconds. GPA itself is independent of nozzle count.
+        Count all nozzles installed on the boom. GPA itself is independent of nozzle count.
       </div>
 
       <label>Nozzle spacing (inches)</label>
       <input type="number" id="spacing_in" value="20" min="1" step="0.1" />
       <div class="description">
-        Center to center distance between adjacent nozzles in inches. Common spacings include 15 and 20 inches.
+        Center-to-center distance between adjacent nozzles in inches.
       </div>
 
       <label>Calibration distance (feet)</label>
       <input type="number" id="calib_distance_ft" value="100" min="1" step="0.1" />
       <div class="description">
-        Measured course length that you traverse at application speed. Use a measuring tape or flags. Example: 100 feet.
+        Measured course length that you travel at application speed. Use a measuring tape or flags. Example: 100 feet.
       </div>
 
       <label>Calibration time for that distance (seconds)</label>
@@ -180,7 +180,7 @@
       <label>Per nozzle catch in 15 seconds (mL)</label>
       <input type="number" id="catch_15s_ml" value="500" min="0" step="0.1" />
       <div class="description">
-        With the sprayer stationary, run the system at the operating pressure and collect output from one nozzle for exactly 15 seconds. Enter that volume in milliliters.
+        With the sprayer stationary, run the system at the operating pressure and collect output from one nozzle for exactly 15 seconds. Enter that volume in milliliters. Pro Tip: use an average volume from at least 3 nozzles. 
       </div>
 
       <button class="calc-btn" onclick="calculateCurrent()">Calculate Current GPA</button>
@@ -200,28 +200,28 @@
       <label>Desired application rate (GPA)</label>
       <input type="number" id="target_gpa" value="15" min="0" step="0.1" />
       <div class="description">
-        Enter the target gallons per acre you plan to apply. Example: 10, 12.5, 15, or 20 GPA.
+        Enter the target gallons per acre you plan to apply. Example: 10, 15, or 20 GPA.
       </div>
 
       <label>Nozzle spacing (inches)</label>
       <input type="number" id="spacing_in_target" value="20" min="1" step="0.1" />
       <div class="description">
-        Center to center nozzle spacing in inches, matching your hardware configuration.
+        Center-to-center distance between adjacent nozzles in inches.
       </div>
 
       <label>Calibration distance (feet)</label>
       <input type="number" id="calib_distance_ft_target" value="100" min="1" step="0.1" />
       <div class="description">
-        The same measured course you will traverse at application speed. This is used to compute ground speed.
+	Measured course length that you travel at application speed. Use a measuring tape or flags. Example: 100 feet.
       </div>
 
       <label>Calibration time for that distance (seconds)</label>
       <input type="number" id="calib_time_sec_target" value="15" min="1" step="0.1" />
       <div class="description">
-        Time to traverse the calibration distance at application speed. Together with distance, this defines mph used for the target calculation.
+        Time required to travel the calibration distance at application speed. Use a stopwatch. This defines ground speed for the calculations.
       </div>
 
-      <button class="calc-btn" onclick="calculateTarget()">Calculate Required Per Nozzle 15 s Catch</button>
+      <button class="calc-btn" onclick="calculateTarget()">Calculate Volume Required Per Nozzle (15s Catch)</button>
 
       <div class="results" id="results-target" style="display: none;">
         <h2>Required Volume</h2>
