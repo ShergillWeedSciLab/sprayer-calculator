@@ -18,6 +18,7 @@
   --gpa-button: #f0f0f0; /* Very light grey for GPA buttons */
   --gpa-button-active: #d0d0d0; /* Darker grey for active GPA button */
   --gpa-button-hover: #e0e0e0; /* Hover color for GPA buttons */
+  --input-border: #e0e0e0; /* Very light border for input fields */
 }
 
 /* General body styling - creates the overall page layout */
@@ -117,12 +118,12 @@ label {
   color: var(--text-primary);
 }
 
-/* Input field styling */
+/* Input field styling with light border */
 input { 
   width: 100%; 
   padding: 12px; 
   margin-top: 6px; 
-  border: 1px solid var(--border); 
+  border: 1px solid var(--input-border); 
   border-radius: 10px;
   font-size: 16px; 
   background: #fafafa; 
@@ -266,7 +267,7 @@ input:focus {
   border-color: #b0b0b0;
 }
 
-/* Action buttons container */
+/* Action buttons container - single line */
 .actions {
   display: flex;
   gap: 12px;
@@ -284,6 +285,7 @@ input:focus {
   font-weight: 600;
   transition: all 0.2s ease;
   flex: 1;
+  white-space: nowrap;
 }
 
 .secondary-btn:hover {
@@ -293,7 +295,8 @@ input:focus {
 /* Print button styling */
 .print-btn {
   background: #555;
-  margin-top: 10px;
+  margin-top: 0;
+  flex: 1;
 }
 
 .print-btn:hover {
@@ -378,11 +381,6 @@ input:focus {
 
   <!-- CURRENT GPA TAB CONTENT -->
   <div id="current" class="tab-content active">
-    <!-- Input for number of nozzles -->
-    <label>Number of nozzles</label>
-    <input type="number" id="n_nozzles" value="4" min="1" />
-    <div class="description">Count all nozzles installed on the boom. GPA itself is independent of nozzle count.</div>
-
     <!-- Input for nozzle spacing -->
     <label>Nozzle spacing (inches)</label>
     <input type="number" id="spacing_in" value="20" min="1" step="0.5" />
@@ -411,14 +409,13 @@ input:focus {
       <h2 class="results-heading">Results</h2>
       <div class="results-grid">
         <div class="result-card"><h3>Ground speed</h3><p><span id="speed_current"></span> mph</p></div>
-        <div class="result-card"><h3>Nozzle flow rate</h3><p><span id="gpm_current"></span> GPM per nozzle</p></div>
-        <div class="result-card"><h3>Per nozzle in 15s</h3><p><span id="pernoz15_fl"></span> fl oz (<span id="pernoz15_ml"></span> mL)</p></div>
-        <div class="result-card"><h3>Total boom output (15s)</h3><p><span id="boom15_fl"></span> fl oz (<span id="boom15_ml"></span> mL)</p></div>
+        <div class="result-card"><h3>Nozzle flow rate</h3><p><span id="ml_min_current"></span> mL/min</p></div>
+        <div class="result-card"><h3>Per nozzle in 15s</h3><p><span id="pernoz15_ml"></span> mL</p></div>
         <div class="result-card"><h3>Gallons per acre (GPA)</h3><p><span id="gpa_current"></span></p></div>
         <div class="result-card"><h3>Tanks per acre (50 gal tank)</h3><p><span id="tanks_per_acre_current"></span></p></div>
       </div>
       
-      <!-- Action buttons for printing and resetting -->
+      <!-- Action buttons for printing and resetting - single line -->
       <div class="actions">
         <button class="secondary-btn" onclick="resetForm('current')">Reset Form</button>
         <button class="calc-btn print-btn" onclick="printActiveTab()">Print Results</button>
@@ -462,12 +459,11 @@ input:focus {
       <h2 class="results-heading">Results</h2>
       <div class="results-grid">
         <div class="result-card"><h3>Ground speed</h3><p><span id="speed_target"></span> mph</p></div>
-        <div class="result-card"><h3>Required nozzle flow</h3><p><span id="gpm_target"></span> GPM per nozzle<br>(<span id="floz_min_target"></span> fl oz/min | <span id="ml_min_target"></span> mL/min)</p></div>
-        <div class="result-card"><h3>Per nozzle in 15s</h3><p><span id="req15_fl"></span> fl oz (<span id="req15_ml"></span> mL)</p></div>
+        <div class="result-card"><h3>Required nozzle flow</h3><p><span id="ml_min_target"></span> mL/min<br>(<span id="req15_ml"></span> mL in 15s)</p></div>
         <div class="result-card"><h3>Tanks per acre (50 gal tank)</h3><p><span id="tanks_per_acre_target"></span></p></div>
       </div>
       
-      <!-- Action buttons for printing and resetting -->
+      <!-- Action buttons for printing and resetting - single line -->
       <div class="actions">
         <button class="secondary-btn" onclick="resetForm('target')">Reset Form</button>
         <button class="calc-btn print-btn" onclick="printActiveTab()">Print Results</button>
@@ -515,7 +511,6 @@ function printActiveTab() {
 // Reset form function
 function resetForm(tab) {
   if (tab === 'current') {
-    document.getElementById('n_nozzles').value = '4';
     document.getElementById('spacing_in').value = '20';
     document.getElementById('calib_distance_ft').value = '100';
     document.getElementById('calib_time_sec').value = '15';
@@ -537,14 +532,13 @@ function resetForm(tab) {
 // Current GPA calculation function
 function calculateCurrent(){
   // Get input values from form
-  const nNoz = parseFloat(document.getElementById('n_nozzles').value),
-        spacingIn = parseFloat(document.getElementById('spacing_in').value),
+  const spacingIn = parseFloat(document.getElementById('spacing_in').value),
         distFt = parseFloat(document.getElementById('calib_distance_ft').value),
         timeSec = parseFloat(document.getElementById('calib_time_sec').value),
         catch15mL = parseFloat(document.getElementById('catch_15s_ml').value);
   
   // Validate inputs - check if they are positive numbers
-  if([nNoz, spacingIn, distFt, timeSec, catch15mL].some(v => !isFinite(v) || v <= 0)){
+  if([spacingIn, distFt, timeSec, catch15mL].some(v => !isFinite(v) || v <= 0)){
     alert('Please provide valid positive inputs for all fields');
     return;
   }
@@ -553,21 +547,15 @@ function calculateCurrent(){
   const mph = (distFt / timeSec) * (SEC_PER_HOUR / FT_PER_MILE), // Calculate miles per hour
         catch15_gal = catch15mL / ML_PER_GALLON, // Convert mL to gallons
         gpm_per_nozzle = catch15_gal / 0.25, // Calculate gallons per minute (15s = 0.25min)
+        ml_per_min = gpm_per_nozzle * ML_PER_GALLON, // Convert to mL per minute
         gpa = (gpm_per_nozzle * SPRAYER_CONST) / (mph * spacingIn), // Calculate gallons per acre
-        boom15_gal = catch15_gal * nNoz, // Total output for all nozzles in gallons
-        boom15_ml = catch15mL * nNoz, // Total output for all nozzles in mL
-        pernoz15_fl = catch15_gal * FL_OZ_PER_GAL, // Convert to fluid ounces
-        boom15_fl = boom15_gal * FL_OZ_PER_GAL, // Convert to fluid ounces
         tanksPerAcre = gpa > 0 ? (TANK_SIZE / gpa).toFixed(2) : 0; // Calculate tanks per acre based on fixed tank size
 
   // Display results
   document.getElementById('results-current').style.display = 'block';
   document.getElementById('speed_current').innerText = mph.toFixed(2);
-  document.getElementById('gpm_current').innerText = gpm_per_nozzle.toFixed(3);
-  document.getElementById('pernoz15_fl').innerText = pernoz15_fl.toFixed(1);
+  document.getElementById('ml_min_current').innerText = ml_per_min.toFixed(1);
   document.getElementById('pernoz15_ml').innerText = catch15mL.toFixed(1);
-  document.getElementById('boom15_fl').innerText = boom15_fl.toFixed(1);
-  document.getElementById('boom15_ml').innerText = boom15_ml.toFixed(1);
   document.getElementById('gpa_current').innerText = gpa.toFixed(2);
   document.getElementById('tanks_per_acre_current').innerText = tanksPerAcre;
 }
@@ -589,20 +577,14 @@ function calculateTarget(){
   // Perform calculations
   const mph = (distFt / timeSec) * (SEC_PER_HOUR / FT_PER_MILE), // Calculate miles per hour
         gpm_needed = (targetGPA * mph * spacingIn) / SPRAYER_CONST, // Calculate required GPM
-        floz_per_min = gpm_needed * FL_OZ_PER_GAL, // Convert to fluid ounces per minute
         ml_per_min = gpm_needed * ML_PER_GALLON, // Convert to mL per minute
-        req15_gal = gpm_needed * 0.25, // Calculate required output in 15 seconds (gallons)
-        req15_ml = req15_gal * ML_PER_GALLON, // Convert to mL
-        req15_fl = req15_gal * FL_OZ_PER_GAL, // Convert to fluid ounces
+        req15_ml = ml_per_min * 0.25, // Calculate required output in 15 seconds (mL)
         tanksPerAcre = targetGPA > 0 ? (TANK_SIZE / targetGPA).toFixed(2) : 0; // Calculate tanks per acre based on fixed tank size
 
   // Display results
   document.getElementById('results-target').style.display = 'block';
   document.getElementById('speed_target').innerText = mph.toFixed(2);
-  document.getElementById('gpm_target').innerText = gpm_needed.toFixed(3);
-  document.getElementById('floz_min_target').innerText = floz_per_min.toFixed(1);
   document.getElementById('ml_min_target').innerText = ml_per_min.toFixed(1);
-  document.getElementById('req15_fl').innerText = req15_fl.toFixed(1);
   document.getElementById('req15_ml').innerText = req15_ml.toFixed(1);
   document.getElementById('tanks_per_acre_target').innerText = tanksPerAcre;
 }
