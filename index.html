@@ -182,4 +182,35 @@
 
     <label>Calibration distance (feet)</label>
     <input type="number" id="calib_distance_ft" value="100" min="1" step="1" />
-    <div
+    <div class="description">Measured course length that you travel at application speed. Use a measuring tape & flags.</div>
+
+    <label>Calibration time for that distance (seconds)</label>
+    <input type="number" id="calib_time_sec" value="15" min="1" step="0.1" />
+    <div class="description">Time required to travel the calibration distance at application speed. Use a stopwatch. This defines ground speed.</div>
+
+    <label>Per nozzle catch in 15 seconds (mL)</label>
+    <input type="number" id="catch_15s_ml" value="150" min="0" step="0.1" />
+    <div class="description">With the sprayer stationary, run the system at operating pressure and collect output from one nozzle for 15 seconds. Average from at least 3 nozzles.</div>
+
+    <button class="calc-btn" onclick="calculateCurrent()">Calculate Current GPA</button>
+
+    <div class="results" id="results-current" style="display: none;">
+      <h2>Results</h2>
+      <p>Ground speed: <span id="speed_current"></span> mph</p>
+      <p>Nozzle flow rate: <span id="gpm_current"></span> GPM per nozzle</p>
+      <p>Per nozzle in 15 s: <span id="pernoz15_gal"></span> gallons (<span id="pernoz15_ml"></span> mL)</p>
+      <p>Total boom in 15 s: <span id="boom15_gal"></span> gallons (<span id="boom15_ml"></span> mL)</p>
+      <p>Gallons per acre (GPA): <span id="gpa_current"></span></p>
+    </div>
+  </div>
+
+  <!-- TARGET GPA -->
+  <div id="target" class="tab-content">
+    <label>Desired Application Rate (GPA)</label>
+    <div class="gpa-options">
+      <button type="button" class="gpa-btn active" onclick="selectGPA(10)">10 GPA</button>
+      <button type="button" class="gpa-btn" onclick="selectGPA(15)">15 GPA</button>
+      <button type="button" class="gpa-btn" onclick="selectGPA(20)">20 GPA</button>
+      <button type="button" class="gpa-btn" id="custom-btn" onclick="enableCustomGPA()">Custom</button>
+    </div>
+    <input type="number" id="target_gpa" value="15" style="margin-top:8px; width: 100%; padding: 10px; border-radius
