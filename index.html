@@ -289,6 +289,12 @@ input:focus {
     color: #666;
   }
   
+  /* NEW: Keep title color consistent in print */
+  .title {
+    color: #D9782D !important; /* Same orange as in the tool */
+    text-shadow: none !important;
+  }
+  
   /* Improve print layout */
   .result-card {
     box-shadow: none;
@@ -310,11 +316,11 @@ input:focus {
     display: block !important;
     page-break-after: avoid;
   }
-  
-  .title {
-    color: black !important;
-    text-shadow: none !important;
-  }
+}
+
+/* Hide print footer on screen */
+.print-footer {
+  display: none;
 }
 
 /* GPA quick selection buttons container */
