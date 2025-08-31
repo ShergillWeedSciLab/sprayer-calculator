@@ -619,29 +619,8 @@ UTILITY FUNCTIONS
 UTILITY FUNCTIONS
 ================================================
 */
-
-// Variable to track if user wants to suppress print messages
-let suppressPrintMessages = false;
-
 function printActiveTab() {
-  // Show confirmation dialog only if not suppressed
-  if (!suppressPrintMessages) {
-    const userChoice = confirm("Ready to print? This will open your browser's print dialog.\n\nClick 'Cancel' to suppress this message in the future.");
-    
-    if (userChoice === false) {
-      // User clicked Cancel - ask if they want to suppress future messages
-      const suppressChoice = confirm("Would you like to suppress this confirmation message for future prints?");
-      if (suppressChoice) {
-        suppressPrintMessages = true;
-      }
-      return; // Exit without printing
-    }
-  }
-  
-  // Always execute print regardless of message suppression
-  setTimeout(() => {
-    window.print();
-  }, 100); // Small delay ensures dialog closes first
+  window.print();
 }
 
 function resetForm(tab) {
