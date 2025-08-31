@@ -334,7 +334,7 @@ RESULTS DISPLAY
 SLEEK FOOTER
 ================================================
 */
-.footer { 
+.footer {
   margin-top: 6px;
   padding: 20px;
   background: rgba(248, 248, 248, 0.6);
@@ -347,14 +347,7 @@ SLEEK FOOTER
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 24px;
-}
-
-.footer-info {
-  color: #777;
-  font-size: 12px;
-  font-weight: 500;
-  margin: 0;
+  gap: 16px; /* Reduced gap between sections */
 }
 
 .footer-developer {
@@ -362,8 +355,8 @@ SLEEK FOOTER
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  margin-bottom: 1px; /* Add this line to control spacing below */
-
+  margin-top: 12px; /* More space above */
+  margin-bottom: 0px; /* Less space below */
 }
 
 .developer-name {
@@ -384,7 +377,7 @@ SLEEK FOOTER
 .footer-meta {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px; /* Slightly tighter spacing between badge and acknowledgment */
   font-size: 11px;
   color: #999;
   font-weight: 500;
@@ -409,6 +402,7 @@ SLEEK FOOTER
 .print-footer {
   display: none;
 }
+
 
 /* 
 ================================================
