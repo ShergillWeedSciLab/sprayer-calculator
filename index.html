@@ -5,7 +5,20 @@
 <title>SWSL SprayCal Pro</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <style>
-  
+
+<!-- 
+================================================
+APP VERSION — Update this when releasing changes
+================================================
+This version number is injected into the footer and print view.
+================================================
+-->
+<script>
+  const APP_VERSION = "v1.2";
+  const APP_DATE = "August 2025";
+</script>
+
+
 /* 
 ================================================
 COLOR THEME - Change these to customize colors
@@ -779,27 +792,28 @@ MAIN APPLICATION CONTAINER
   </div>
 
   <!-- SLEEK FOOTER: Minimal and professional design -->
-  <div class="footer">
-    <div class="footer-content">
-      <p class="footer-info">All calculations run locally in your browser. No data is stored or transmitted.</p>
-      
-      <div class="footer-developer">
-        <p class="developer-name">Developed by <strong>Dr. Lovreet S. Shergill</strong></p>
-        <p class="developer-affiliation">Agricultural Biology Department | Colorado State University</p>
-      </div>
-      
-      <div class="footer-meta">
-        <span>SWSL SprayCal Pro v1.2 | August 2025 | Built with AI assistance</span>
-      </div>
+<div class="footer">
+  <div class="footer-content">
+    <p class="footer-info">All calculations run locally in your browser. No data is stored or transmitted.</p>
+    
+    <div class="footer-developer">
+      <p class="developer-name">Developed by <strong>Dr. Lovreet S. Shergill</strong></p>
+      <p class="developer-affiliation">Agricultural Biology Department | Colorado State University</p>
     </div>
-  </div>
-  
-  <!-- PRINT-ONLY FOOTER -->
-  <div class="print-footer">
-    SWSL SprayCal Pro v1.2 | Developed by <strong>Dr. Lovreet S. Shergill</strong> | Colorado State University
+    
+    <div class="footer-meta">
+      <span>
+        SWSL SprayCal Pro <span id="version-display"></span> | <span id="date-display"></span> | Built with AI assistance
+      </span>
+    </div>
   </div>
 </div>
 
+<!-- PRINT-ONLY FOOTER -->
+<div class="print-footer">
+  SWSL SprayCal Pro <span id="print-version"></span> | Developed by <strong>Dr. Lovreet S. Shergill</strong> | Colorado State University
+</div>
+  
 <script>
 /* 
 ================================================
