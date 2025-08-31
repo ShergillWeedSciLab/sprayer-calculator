@@ -18,7 +18,7 @@ and print layouts throughout the application.
 ================================================
 -->
 <script>
-  const APP_VERSION = "v2.0";
+  const APP_VERSION = "v2.1";
   const APP_DATE = "August 2025";
   const APP_TITLE = "SWSL SprayCal Pro";
   const DEVELOPER_NAME = "Dr. Lovreet S. Shergill";
@@ -136,15 +136,16 @@ Styles for the application title, subtitle, and branding
   text-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 }
 
+
 /* Pro badge styling */
 .pro-badge {
   background: rgba(217, 120, 45, 0.1);
   color: var(--color-primary-orange);
-  padding: 3px 8px;
-  border-radius: 4px;
+  padding: 3px 12px;
+  border-radius: 6px;
   font-size: 0.4em;
   font-weight: 600;
-  margin-left: 0px;
+  margin-left: 1px;
   display: inline-block;
   border: 1px solid rgba(217, 120, 45, 0.2);
   vertical-align: top;
@@ -547,7 +548,40 @@ and version details. Uses flex layout for responsive design.
   display: none;
 }
 
-RESPONSIVE DESIGN ================================================ Mobile-first responsive breakpoints for optimal viewing on all device sizes from phones to desktops. ================================================ */ /* Mobile styles (up to 600px) */ @media (max-width: 600px) { .container { padding: var(--spacing-lg); } .title { font-size: 2rem; } .tabs { flex-direction: column; } .tab { border-radius: 10px; margin-bottom: 5px; font-size: 16px; padding: var(--spacing-md) 16px; } .results-grid { grid-template-columns: 1fr; } .actions { flex-direction: column; } .footer { padding: 16px; margin-top: var(--spacing-lg); } .footer-meta { flex-direction: column; gap: 6px; } } /* Tablet styles (601px to 1024px) */ @media (max-width: 1024px) and (min-width: 601px) { .tab { font-size: 15px; padding: var(--spacing-md) 14px; } } /* ================================================ PRINT STYLES ================================================ Optimized print layout for field use. Hides interactive elements and provides clean, readable output. ================================================ */ @media print { /* Reset print styles */ body { background: white; padding: 0; font-size: 12pt; margin: 0; } .container { box-shadow: none; padding: 10px; max-width: 100%; margin: 0; border-radius: 0; } /* Hide interactive elements for print */ .tabs, .calc-btn, .gpa-buttons, .actions, .footer { display: none; } /* Show only active tab content */ .tab-content { display: none !important; } .tab-content.active { display: block !important; } .results { display: block !important; } /* Print header adjustments */ .header { margin-bottom: 15px; padding-bottom: 8px; } .title { font-size: 20pt; margin-bottom: 5px; } .subtitle { font-size: 12pt; } /* Print results container */ .results-container { background: white; border: 1px solid #ccc; border-radius: var(--radius-sm); padding: var(--spacing-md); margin-top: 10px; page-break-inside: avoid; } .results-heading { font-size: 14pt; margin: 0 0 var(--spacing-sm); color: var(--color-primary-green); } /* Print-optimized grid layout */ .results-grid { display: flex !important; flex-wrap: nowrap !important; gap: var(--spacing-sm) !important; margin-top: 5px; justify-content: space-around; width: 100%; } /* Print-optimized result cards */ .result-card { flex: 1 !important; min-width: 0 !important; max-width: calc(25% - 6px) !important; box-shadow: none !important; border: 1px solid #ccc !important; border-radius: 6px !important; padding: 6px 4px !important; background: white !important; page-break-inside: avoid; font-size: 10pt; } .result-card h3 { font-size: 10pt !important; margin: 0 0 3px !important; line-height: 1.1 !important; color: #333 !important; font-weight: 600 !important; } .result-card p { font-size: 12pt !important; margin: 0 !important; line-height: 1.2 !important; color: #555 !important; word-wrap: break-word; overflow-wrap: break-word; } .highlight-orange { color: var(--color-primary-orange) !important; font-weight: 700 !important; } /* Show print footer */ .print-footer { display: block !important; text-align: center; font-size: 8pt; margin-top: 15px; padding-top: var(--spacing-sm); border-top: 1px solid #ddd; color: #666; page-break-inside: avoid; } /* Prevent page breaks within critical sections */ .results-container, .result-card { page-break-inside: avoid; } } </style> </head>
+/* Grid layout for result cards - SCREEN DISPLAY (one line) */
+.results-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
+  gap: var(--spacing-md); 
+  margin-top: 4px; 
+}
+
+/* PRINT STYLES - Override for stacked layout */
+@media print {
+  /* Print-optimized grid layout - Stacked in 2x2 grid */
+  .results-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: var(--spacing-md) !important;
+    margin-top: 10px !important;
+    width: 100% !important;
+  }
+
+  /* Print-optimized result cards */
+  .result-card {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    border-radius: 6px !important;
+    padding: 8px 6px !important;
+    background: white !important;
+    page-break-inside: avoid;
+    font-size: 10pt;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+}
+  
 <body>
 <!-- 
 ================================================
