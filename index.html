@@ -144,7 +144,7 @@ Styles for the application title, subtitle, and branding
   border-radius: 4px;
   font-size: 0.4em;
   font-weight: 600;
-  margin-left: 1px;
+  margin-left: 0px;
   display: inline-block;
   border: 1px solid rgba(217, 120, 45, 0.2);
   vertical-align: top;
@@ -934,6 +934,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /**
+
  * Updates version and developer information throughout the app
  * Uses the constants defined at the top of the HTML file
  */
@@ -947,7 +948,7 @@ function updateVersionInfo() {
   // Update developer name display
   const developerElement = document.getElementById('developer-name-display');
   if (developerElement) {
-    developerElement.innerHTML = `Developed by <strong>${DEVELOPER_NAME}</strong>`;
+    developerElement.innerHTML = `<strong>${DEVELOPER_NAME}</strong>`;
   }
   
   // Update institution display
