@@ -406,7 +406,7 @@ PRINT STYLES
     max-width: 100%;
   }
   
-  .tabs, .calc-btn, .footer, .gpa-buttons, .actions {
+  .tabs, .calc-btn, .gpa-buttons, .actions {
     display: none;
   }
   
@@ -576,13 +576,16 @@ MAIN APPLICATION CONTAINER
   <!-- FOOTER: Application information -->
   <div class="footer">
     <p>All calculations run locally in your browser. No data is stored or transmitted.</p>
-    <p>Developed by Dr. Lovreet S. Shergill</p>
-    <p>Colorado State University | Built with AI collaboration</p>
+    <div style="border-top: 1px solid #ddd; margin: 15px 0 12px; padding-top: 12px;">
+      <p>Developed by <strong>Dr. Lovreet S. Shergill</strong></p>
+      <p>Department of Agricultural Biology | Colorado State University</p>
+      <p style="font-size: 11px; color: #888; margin-top: 8px;">Version 1.0 | August 2025</p>
+    </div>
   </div>
   
   <!-- PRINT-ONLY FOOTER -->
   <div class="print-footer">
-    Calculation tool developed by Dr. Lovreet S. Shergill, Colorado State University
+    Developed by Dr. Lovreet S. Shergill | Department of Agricultural Biology, Colorado State University | v1.0
   </div>
 </div>
 
@@ -620,11 +623,6 @@ function switchTab(id){
   }
 }
 
-/* 
-================================================
-UTILITY FUNCTIONS
-================================================
-*/
 /* 
 ================================================
 UTILITY FUNCTIONS
