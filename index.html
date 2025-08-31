@@ -383,6 +383,7 @@ Information shown at bottom of page and when printing
 /* 
 === MOBILE RESPONSIVENESS ===
 Adjustments for smaller screens (phones and tablets)
+Maintains all floating effects and color themes
 */
 @media (max-width: 600px) {
   .container {
@@ -391,6 +392,8 @@ Adjustments for smaller screens (phones and tablets)
   
   .title {
     font-size: 2rem;
+    /* Keep the same shadow effect on mobile */
+    text-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
   }
   
   .tabs {
@@ -400,6 +403,19 @@ Adjustments for smaller screens (phones and tablets)
   .tab {
     border-radius: 10px;
     margin-bottom: 5px;
+    /* Maintain floating effects on mobile */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+  }
+  
+  .tab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .tab.active {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(217, 120, 45, 0.3);
   }
   
   .results-grid {
@@ -408,6 +424,16 @@ Adjustments for smaller screens (phones and tablets)
   
   .actions {
     flex-direction: column;
+  }
+  
+  /* Ensure buttons maintain floating effects on mobile */
+  .calc-btn:hover, .secondary-btn:hover, .print-btn:hover {
+    transform: translateY(-3px);
+  }
+  
+  /* Keep results heading clean on mobile */
+  .results-heading {
+    /* No shadow on mobile for cleaner look */
   }
 }
 
