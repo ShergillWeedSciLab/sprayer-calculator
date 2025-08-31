@@ -76,6 +76,21 @@ HEADER SECTION
   text-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 }
 
+.pro-badge {
+  background: rgba(217, 120, 45, 0.1);
+  color: #D9782D;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.4em;
+  font-weight: 600;
+  margin-left: 1px;
+  display: inline-block;
+  border: 1px solid rgba(217, 120, 45, 0.2);
+  vertical-align: top;
+  position: relative;
+  top: 0.2em;
+}
+
 .subtitle {
   font-size: 1rem;
   color: var(--text-secondary);
@@ -279,10 +294,18 @@ BUTTONS
 RESULTS DISPLAY
 ================================================
 */
+.results-container {
+  background: #f8f9fa;
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #e9ecef;
+}
+
 .results-heading {
   font-size: 1.3rem;
   font-weight: 700;
-  margin: 25px 0 15px;
+  margin: 0 0 15px;
   color: var(--accent-green);
 }
 
@@ -530,7 +553,8 @@ MAIN APPLICATION CONTAINER
   <div class="header">
     <h1 class="title">
       <span style="color: #1E4D2B;">SWSL</span> 
-      <span style="color: #D9782D;">SprayCal Pro</span>
+      <span style="color: #D9782D;">SprayCal</span>
+      <span class="pro-badge">Pro</span>
     </h1>
     <p class="subtitle">Advanced Research Sprayer Calibration Tool</p>
   </div>
@@ -568,23 +592,25 @@ MAIN APPLICATION CONTAINER
 
     <!-- RESULTS SECTION -->
     <div class="results" id="results-current" style="display:none;">
-      <h2 class="results-heading">Results</h2>
-      <div class="results-grid">
-        <div class="result-card">
-          <h3>Ground speed</h3>
-          <p><span id="speed_current"></span> mph</p>
-        </div>
-        <div class="result-card">
-          <h3>Nozzle flow rate</h3>
-          <p><span id="gpm_current"></span> GPM</p>
-        </div>
-        <div class="result-card">
-          <h3>Gallons per acre (GPA)</h3>
-          <p><span class="highlight-orange" id="gpa_current"></span></p>
-        </div>
-        <div class="result-card">
-          <h3>Tanks per acre<br>(1 tank = 50 gal)</h3>
-          <p><span id="tanks_per_acre_current"></span></p>
+      <div class="results-container">
+        <h2 class="results-heading">Results</h2>
+        <div class="results-grid">
+          <div class="result-card">
+            <h3>Ground speed</h3>
+            <p><span id="speed_current"></span> mph</p>
+          </div>
+          <div class="result-card">
+            <h3>Nozzle flow rate</h3>
+            <p><span id="gpm_current"></span> GPM</p>
+          </div>
+          <div class="result-card">
+            <h3>Gallons per acre (GPA)</h3>
+            <p><span class="highlight-orange" id="gpa_current"></span></p>
+          </div>
+          <div class="result-card">
+            <h3>Tanks per acre<br>(1 tank = 50 gal)</h3>
+            <p><span id="tanks_per_acre_current"></span></p>
+          </div>
         </div>
       </div>
       
@@ -628,19 +654,21 @@ MAIN APPLICATION CONTAINER
 
     <!-- RESULTS SECTION -->
     <div class="results" id="results-target" style="display:none;">
-      <h2 class="results-heading">Results</h2>
-      <div class="results-grid">
-        <div class="result-card">
-          <h3>Ground speed</h3>
-          <p><span id="speed_target"></span> mph</p>
-        </div>
-        <div class="result-card">
-          <h3>Required flow per nozzle</h3>
-          <p><span class="highlight-orange"><span id="req15_ml"></span> mL in 15s</span><br>(<span id="ml_min_target"></span> mL/min)</p>
-        </div>
-        <div class="result-card">
-          <h3>Tanks per acre<br>(1 tank = 50 gal)</h3>
-          <p><span id="tanks_per_acre_target"></span></p>
+      <div class="results-container">
+        <h2 class="results-heading">Results</h2>
+        <div class="results-grid">
+          <div class="result-card">
+            <h3>Ground speed</h3>
+            <p><span id="speed_target"></span> mph</p>
+          </div>
+          <div class="result-card">
+            <h3>Required flow per nozzle</h3>
+            <p><span class="highlight-orange"><span id="req15_ml"></span> mL in 15s</span><br>(<span id="ml_min_target"></span> mL/min)</p>
+          </div>
+          <div class="result-card">
+            <h3>Tanks per acre<br>(1 tank = 50 gal)</h3>
+            <p><span id="tanks_per_acre_target"></span></p>
+          </div>
         </div>
       </div>
       
@@ -662,7 +690,7 @@ MAIN APPLICATION CONTAINER
       </div>
       
       <div class="footer-meta">
-        <span>SWSL SprayCal Pro v1.18 | August 2025 | Built with AI assistance</span>
+        <span>SWSL SprayCal Pro v1.2 | August 2025 | Built with AI assistance</span>
       </div>
     </div>
   </div>
