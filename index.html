@@ -6,41 +6,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <style>
 /* 
-=== COLOR THEME SETTINGS ===
-This section defines all the colors used throughout the application.
-You can easily change the entire look by modifying these color values.
+================================================
+COLOR THEME - Change these to customize colors
+================================================
 */
 :root {
-  /* Main page colors */
-  --bg-gradient: linear-gradient(135deg, #f9f9f9, #eaeaea); /* Light grey background gradient */
-  --card-bg: #ffffff;                                        /* White background for main content area */
-  --text-primary: #1c1c1e;                                   /* Dark text for main content */
-  --text-secondary: #555;                                    /* Grey text for descriptions */
-  --accent: #D9782D;                                         /* Orange color for branding and highlights */
-  --input-border: #e0e0e0;                                   /* Light border for input fields */
+  /* Page colors */
+  --bg-gradient: linear-gradient(135deg, #f9f9f9, #eaeaea);
+  --card-bg: #ffffff;
+  --text-primary: #1c1c1e;
+  --text-secondary: #555;
+  --accent-orange: #D9782D;
+  --accent-green: #1E4D2B;
+  --input-border: #e0e0e0;
   
   /* Button colors */
-  --button-bg: #333;                                         /* Dark grey for main action buttons */
-  --button-hover: #555;                                      /* Lighter grey when hovering over buttons */
-  --gpa-button: #f0f0f0;                                     /* Light grey for GPA selection buttons */
-  --gpa-button-active: #d0d0d0;                              /* Darker grey for selected GPA button */
-  --gpa-button-hover: #e0e0e0;                               /* Medium grey when hovering over GPA buttons */
-  
-  /* Print button color options - choose one by changing the variables below */
-  --print-teal: #2D7D8F;         --print-teal-dark: #246472;
-  --print-blue: #2D4D8F;         --print-blue-dark: #233D78;
-  --print-green: #2D8F4D;        --print-green-dark: #24723D;
-  --print-purple: #6D4D8F;       --print-purple-dark: #5A3D78;
-  --print-burgundy: #8F2D4D;     --print-burgundy-dark: #782340;
-  
-  /* ACTIVE PRINT BUTTON COLOR - Change this to switch colors */
-  --print-button: #1E4D2B;
-  --print-button-hover: #163a21;
+  --button-dark: #333;
+  --button-dark-hover: #555;
+  --button-light: #f0f0f0;
+  --button-light-hover: #e0e0e0;
+  --gpa-button: #f0f0f0;
+  --gpa-button-active: #d0d0d0;
+  --gpa-button-hover: #e0e0e0;
 }
 
 /* 
-=== MAIN LAYOUT STYLES ===
-These styles control the overall page layout and structure
+================================================
+MAIN PAGE LAYOUT
+================================================
 */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -64,8 +57,9 @@ body {
 }
 
 /* 
-=== HEADER SECTION ===
-Styles for the title and subtitle at the top of the page
+================================================
+HEADER SECTION
+================================================
 */
 .header {
   text-align: center;
@@ -80,7 +74,6 @@ Styles for the title and subtitle at the top of the page
   margin: 0 0 8px;
   letter-spacing: -0.5px;
   text-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-  /* Individual word colors are now set inline in the HTML */
 }
 
 .subtitle {
@@ -91,8 +84,9 @@ Styles for the title and subtitle at the top of the page
 }
 
 /* 
-=== TAB NAVIGATION ===
-Styles for the "Current GPA" and "Target GPA" tabs
+================================================
+TAB NAVIGATION
+================================================
 */
 .tabs { 
   display: flex; 
@@ -122,13 +116,12 @@ Styles for the "Current GPA" and "Target GPA" tabs
 }
 
 .tab.active {
-  background: var(--accent); 
+  background: var(--accent-orange); 
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(217, 120, 45, 0.3);
 }
 
-/* Tab content areas - only the active tab is visible */
 .tab-content { 
   display: none; 
 }
@@ -136,27 +129,17 @@ Styles for the "Current GPA" and "Target GPA" tabs
 .tab-content.active { 
   display: block;
   animation: tabOpen 0.4s ease-out;
-  transform: translateY(0);
 }
 
-/* 
-=== TAB OPENING ANIMATION ===
-This creates a smooth lifting effect when a tab opens
-*/
 @keyframes tabOpen {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 /* 
-=== FORM INPUTS ===
-Styles for labels, input fields, and descriptions
+================================================
+FORM INPUTS
+================================================
 */
 label { 
   display: block; 
@@ -178,7 +161,7 @@ input {
 }
 
 input:focus { 
-  border-color: var(--accent); 
+  border-color: var(--accent-orange); 
   background: #fff; 
   box-shadow: 0 0 0 3px rgba(217, 120, 45, 0.1);
 }
@@ -191,17 +174,16 @@ input:focus {
 }
 
 /* 
-=== BUTTONS ===
-Styles for all different types of buttons used in the application
+================================================
+BUTTONS
+================================================
 */
-
-/* Main calculation buttons (dark grey) */
+/* Main calculation buttons */
 .calc-btn { 
   width: 100%; 
   padding: 14px; 
-  margin-top: 22px; 
-  margin-bottom: 12px;
-  background: var(--button-bg); 
+  margin: 22px 0 12px 0;
+  background: var(--button-dark); 
   color: white; 
   font-size: 16px; 
   font-weight: 700;
@@ -210,20 +192,15 @@ Styles for all different types of buttons used in the application
   cursor: pointer; 
   transition: all 0.25s ease; 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(0);
 }
 
 .calc-btn:hover {
-  background: var(--button-hover);
+  background: var(--button-dark-hover);
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
-.calc-btn:active {
-  transform: translateY(0);
-}
-
-/* GPA quick selection buttons */
+/* GPA selection buttons */
 .gpa-buttons { 
   display: flex; 
   gap: 6px; 
@@ -255,18 +232,15 @@ Styles for all different types of buttons used in the application
   border-color: #b0b0b0;
 }
 
-/* Action buttons container (Reset and Print buttons) */
+/* Action buttons (Reset and Print) */
 .actions {
   display: flex;
   gap: 12px;
   margin-top: 20px;
 }
 
-/* Reset button (light grey) */
-.secondary-btn {
+.action-btn {
   padding: 12px 20px;
-  background: #f0f0f0;
-  color: var(--text-primary);
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -275,49 +249,41 @@ Styles for all different types of buttons used in the application
   flex: 1;
   font-size: 16px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-  transform: translateY(0);
 }
 
-.secondary-btn:hover {
-  background: #e0e0e0;
+.action-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18);
 }
 
-/* Print button (colored to match results heading) */
+.reset-btn {
+  background: var(--button-light);
+  color: var(--text-primary);
+}
+
+.reset-btn:hover {
+  background: var(--button-light-hover);
+}
+
 .print-btn {
-  background: var(--print-button);
+  background: var(--accent-green);
   color: white;
-  margin-top: 0;
-  margin-bottom: 0;
-  flex: 1;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: 700;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-  transition: all 0.2s ease;
-  transform: translateY(0);
 }
 
 .print-btn:hover {
-  background: var(--print-button-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18);
-}
-
-.print-btn:active {
-  transform: translateY(0);
+  background: #163a21;
 }
 
 /* 
-=== RESULTS DISPLAY ===
-Styles for showing calculation results in cards
+================================================
+RESULTS DISPLAY
+================================================
 */
 .results-heading {
   font-size: 1.3rem;
   font-weight: 700;
   margin: 25px 0 15px;
-  color: var(--print-button); /* Same color as print button */
+  color: var(--accent-green);
 }
 
 .results-grid { 
@@ -358,15 +324,15 @@ Styles for showing calculation results in cards
   font-weight: 500;
 }
 
-/* Special highlighting for important values */
 .highlight-orange {
-  color: var(--accent);
+  color: var(--accent-orange);
   font-weight: 700;
 }
 
 /* 
-=== FOOTER AND PRINT SECTIONS ===
-Information shown at bottom of page and when printing
+================================================
+FOOTER
+================================================
 */
 .footer { 
   text-align: center; 
@@ -377,13 +343,13 @@ Information shown at bottom of page and when printing
 }
 
 .print-footer {
-  display: none; /* Hidden on screen, only shows when printing */
+  display: none;
 }
 
 /* 
-=== MOBILE RESPONSIVENESS ===
-Adjustments for smaller screens (phones and tablets)
-Maintains all floating effects and color themes
+================================================
+MOBILE RESPONSIVENESS
+================================================
 */
 @media (max-width: 600px) {
   .container {
@@ -392,8 +358,6 @@ Maintains all floating effects and color themes
   
   .title {
     font-size: 2rem;
-    /* Keep the same shadow effect on mobile */
-    text-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
   }
   
   .tabs {
@@ -403,19 +367,6 @@ Maintains all floating effects and color themes
   .tab {
     border-radius: 10px;
     margin-bottom: 5px;
-    /* Maintain floating effects on mobile */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transform: translateY(0);
-  }
-  
-  .tab:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  .tab.active {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(217, 120, 45, 0.3);
   }
   
   .results-grid {
@@ -425,22 +376,12 @@ Maintains all floating effects and color themes
   .actions {
     flex-direction: column;
   }
-  
-  /* Ensure buttons maintain floating effects on mobile */
-  .calc-btn:hover, .secondary-btn:hover, .print-btn:hover {
-    transform: translateY(-3px);
-  }
-  
-  /* Keep results heading clean on mobile */
-  .results-heading {
-    /* No shadow on mobile for cleaner look */
-  }
 }
 
 /* 
-=== PRINT STYLES ===
-Special formatting when the page is printed
-Only the active tab content will be printed
+================================================
+PRINT STYLES
+================================================
 */
 @media print {
   body {
@@ -455,12 +396,10 @@ Only the active tab content will be printed
     max-width: 100%;
   }
   
-  /* Hide interactive elements when printing */
   .tabs, .calc-btn, .footer, .gpa-buttons, .actions {
     display: none;
   }
   
-  /* Only show the currently active tab */
   .tab-content {
     display: none !important;
   }
@@ -473,7 +412,6 @@ Only the active tab content will be printed
     display: block !important;
   }
   
-  /* Show print acknowledgement */
   .print-footer {
     display: block !important;
     text-align: center;
@@ -484,52 +422,41 @@ Only the active tab content will be printed
     color: #666;
   }
   
-  /* Maintain branding colors in print */
-  .title {
-    color: #D9782D !important;
-    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.20);
-  }
-  
-  /* Improve card appearance in print */
   .result-card {
     box-shadow: none;
     border: 1px solid #ddd !important;
     page-break-inside: avoid;
-  }
-  
-  .results-grid {
-    gap: 8px;
-    margin-bottom: 15px;
-  }
-  
-  .results-heading, .header {
-    page-break-after: avoid;
   }
 }
 </style>
 </head>
 <body>
 <!-- 
-=== MAIN CONTENT CONTAINER ===
-This div contains all the visible content of the application
+================================================
+MAIN APPLICATION CONTAINER
+================================================
 -->
 <div class="container">
   
-  <!-- PAGE HEADER: Title and subtitle -->
+  <!-- HEADER: Application title and description -->
   <div class="header">
-    <h1 class="title"><span style="color: #1E4D2B;">SWSL</span> <span style="color: #D9782D;">SprayCal Pro</span></h1>
+    <h1 class="title">
+      <span style="color: #1E4D2B;">SWSL</span> 
+      <span style="color: #D9782D;">SprayCal Pro</span>
+    </h1>
     <p class="subtitle">Advanced Research Sprayer Calibration Tool</p>
   </div>
 
-  <!-- TAB NAVIGATION: Switch between Current GPA and Target GPA modes -->
+  <!-- TAB NAVIGATION: Switch between two calculation modes -->
   <div class="tabs">
     <button class="tab active" onclick="switchTab('current')">Current GPA</button>
     <button class="tab" onclick="switchTab('target')">Target GPA</button>
   </div>
 
   <!-- 
-  === CURRENT GPA TAB ===
-  This tab analyzes your existing sprayer setup to determine what GPA you're currently applying
+  ================================================
+  CURRENT GPA TAB - Analyze existing setup
+  ================================================
   -->
   <div id="current" class="tab-content active">
     
@@ -545,13 +472,13 @@ This div contains all the visible content of the application
     <input type="number" id="calib_time_sec" value="10" min="1" step="0.1" />
     <div class="description">Time required to travel calibration distance at application speed. Use stopwatch. Defines ground speed.</div>
 
-    <label>Per nozzle catch in 15 seconds (mL)</label>
+    <label>Nozzle flow measurement (mL/15s)</label>
     <input type="number" id="catch_15s_ml" value="150" min="0" step="0.1" />
-    <div class="description">Run system for 15s, collect output from one nozzle in mL. <strong>Pro-Tip:</strong> average from 3 nozzles.</div>
+    <div class="description">Volume of liquid collected from an individual nozzle over a 15-second interval. <br><strong>Pro-Tip:</strong> For accurate calibration, average results from multiple nozzles (at least 3).</div>
 
     <button class="calc-btn" onclick="calculateCurrent()">Analyze Current Setup</button>
 
-    <!-- Results display area (hidden until calculation is performed) -->
+    <!-- RESULTS SECTION -->
     <div class="results" id="results-current" style="display:none;">
       <h2 class="results-heading">Results</h2>
       <div class="results-grid">
@@ -574,20 +501,20 @@ This div contains all the visible content of the application
       </div>
       
       <div class="actions">
-        <button class="secondary-btn" onclick="resetForm('current')">Reset Form</button>
-        <button class="calc-btn print-btn" onclick="printActiveTab()">PRINT</button>
+        <button class="action-btn reset-btn" onclick="resetForm('current')">Reset Form</button>
+        <button class="action-btn print-btn" onclick="printActiveTab()">PRINT</button>
       </div>
     </div>
   </div>
 
   <!-- 
-  === TARGET GPA TAB ===
-  This tab calculates what nozzle flow rate you need to achieve a desired GPA
+  ================================================
+  TARGET GPA TAB - Calculate requirements for desired GPA
+  ================================================
   -->
   <div id="target" class="tab-content">
     
     <label>Desired application rate (GPA)</label>
-    <!-- Quick selection buttons for common GPA values -->
     <div class="gpa-buttons">
       <button class="gpa-btn" onclick="setGPA(10,this)">10 GPA</button>
       <button class="gpa-btn" onclick="setGPA(15,this)">15 GPA</button>
@@ -611,7 +538,7 @@ This div contains all the visible content of the application
 
     <button class="calc-btn" onclick="calculateTarget()">Calculate Target Requirements</button>
 
-    <!-- Results display area (hidden until calculation is performed) -->
+    <!-- RESULTS SECTION -->
     <div class="results" id="results-target" style="display:none;">
       <h2 class="results-heading">Results</h2>
       <div class="results-grid">
@@ -630,19 +557,19 @@ This div contains all the visible content of the application
       </div>
       
       <div class="actions">
-        <button class="secondary-btn" onclick="resetForm('target')">Reset Form</button>
-        <button class="calc-btn print-btn" onclick="printActiveTab()">PRINT</button>
+        <button class="action-btn reset-btn" onclick="resetForm('target')">Reset Form</button>
+        <button class="action-btn print-btn" onclick="printActiveTab()">PRINT</button>
       </div>
     </div>
   </div>
 
-  <!-- PAGE FOOTER: Information about the tool -->
+  <!-- FOOTER: Application information -->
   <div class="footer">
     <p>All calculations run locally in your browser. No data is stored or transmitted.</p>
     <p>Developed by Dr. Lovreet S. Shergill, Colorado State University | Built with AI collaboration</p>
   </div>
   
-  <!-- PRINT-ONLY FOOTER: Shows developer credit when printing -->
+  <!-- PRINT-ONLY FOOTER -->
   <div class="print-footer">
     Calculation tool developed by Dr. Lovreet S. Shergill, Colorado State University
   </div>
@@ -650,111 +577,106 @@ This div contains all the visible content of the application
 
 <script>
 /* 
-=== MATHEMATICAL CONSTANTS ===
-These numbers are used in the sprayer calibration calculations
+================================================
+CALCULATION CONSTANTS
+================================================
+These numbers are used in sprayer calibration formulas
 */
-const FT_PER_MILE = 5280;        // How many feet are in one mile
-const SEC_PER_HOUR = 3600;       // How many seconds are in one hour
-const ML_PER_GALLON = 3785.41;   // How many milliliters are in one gallon
-const SPRAYER_CONST = 5940;      // Standard constant used in sprayer GPA calculations
-const TANK_SIZE = 50;            // Fixed tank size of 50 gallons for tank-per-acre calculations
+const FT_PER_MILE = 5280;        // Feet in one mile
+const SEC_PER_HOUR = 3600;       // Seconds in one hour  
+const ML_PER_GALLON = 3785.41;   // Milliliters in one gallon
+const SPRAYER_CONST = 5940;      // Standard sprayer calculation constant
+const TANK_SIZE = 50;            // Tank size for calculations (gallons)
 
 /* 
-=== TAB SWITCHING FUNCTION ===
-This function controls which tab (Current GPA or Target GPA) is visible
-When you click a tab, it hides the other tab and shows the selected one
+================================================
+TAB SWITCHING
+================================================
+Controls which tab is visible (Current GPA or Target GPA)
 */
 function switchTab(id){
-  // Remove the "active" class from all tabs and content areas
+  // Hide all tabs and content
   document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
   
-  // Add the "active" class to the selected tab and its content
+  // Show selected tab
   if(id === 'current'){
-    document.querySelectorAll('.tab')[0].classList.add('active');      // First tab button
-    document.getElementById('current').classList.add('active');        // Current GPA content
+    document.querySelectorAll('.tab')[0].classList.add('active');
+    document.getElementById('current').classList.add('active');
   } else {
-    document.querySelectorAll('.tab')[1].classList.add('active');      // Second tab button  
-    document.getElementById('target').classList.add('active');         // Target GPA content
+    document.querySelectorAll('.tab')[1].classList.add('active');
+    document.getElementById('target').classList.add('active');
   }
 }
 
 /* 
-=== PRINT FUNCTION ===
-This function prints only the currently visible tab
-It uses the browser's built-in print functionality
+================================================
+UTILITY FUNCTIONS
+================================================
 */
 function printActiveTab() {
   window.print();
 }
 
-/* 
-=== FORM RESET FUNCTION ===
-This function resets all input fields back to their default values
-and hides any displayed results
-*/
 function resetForm(tab) {
   if (tab === 'current') {
-    // Reset Current GPA tab inputs to defaults
     document.getElementById('spacing_in').value = '20';
     document.getElementById('calib_distance_ft').value = '100';
     document.getElementById('calib_time_sec').value = '10';
     document.getElementById('catch_15s_ml').value = '150';
     document.getElementById('results-current').style.display = 'none';
   } else {
-    // Reset Target GPA tab inputs to defaults
     document.getElementById('target_gpa').value = '15';
     document.getElementById('spacing_in_target').value = '20';
     document.getElementById('calib_distance_ft_target').value = '100';
     document.getElementById('calib_time_sec_target').value = '10';
     document.getElementById('results-target').style.display = 'none';
     
-    // Reset GPA selection buttons to "Custom" 
     document.querySelectorAll('.gpa-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll('.gpa-btn')[3].classList.add('active');
   }
 }
 
-/* 
-=== CURRENT GPA CALCULATION ===
-This function analyzes your existing sprayer setup to determine what GPA you're currently applying
+function setGPA(value, button){
+  const input = document.getElementById('target_gpa');
+  if(value !== null){ 
+    input.value = value;
+  } else {
+    input.focus();
+    input.select();
+  }
+  document.querySelectorAll('.gpa-btn').forEach(btn => btn.classList.remove('active'));
+  button.classList.add('active');
+}
 
-CALCULATION STEPS:
-1. Get all input values from the form
-2. Check that all inputs are valid positive numbers
-3. Calculate ground speed from distance and time
-4. Convert nozzle catch from mL to gallons per minute
-5. Use sprayer formula to calculate gallons per acre (GPA)
-6. Calculate how many 50-gallon tanks needed per acre
-7. Display all results
+/* 
+================================================
+CALCULATION FUNCTIONS
+================================================
 */
+
+/* CURRENT GPA CALCULATION - Analyzes existing sprayer setup */
 function calculateCurrent(){
-  // Step 1: Get input values from the form
+  // Get input values
   const spacingIn = parseFloat(document.getElementById('spacing_in').value),
         distFt = parseFloat(document.getElementById('calib_distance_ft').value),
         timeSec = parseFloat(document.getElementById('calib_time_sec').value),
         catch15mL = parseFloat(document.getElementById('catch_15s_ml').value);
   
-  // Step 2: Validate that all inputs are positive numbers
+  // Validate inputs
   if([spacingIn, distFt, timeSec, catch15mL].some(v => !isFinite(v) || v <= 0)){
     alert('Please provide valid positive inputs for all fields');
     return;
   }
 
-  // Step 3: Calculate ground speed in miles per hour
+  // Calculate results
   const mph = (distFt / timeSec) * (SEC_PER_HOUR / FT_PER_MILE);
-  
-  // Step 4: Convert nozzle catch to gallons per minute
-  const catch15_gal = catch15mL / ML_PER_GALLON;              // Convert mL to gallons
-  const gpm_per_nozzle = catch15_gal / 0.25;                  // Convert 15 seconds to gallons per minute
-  
-  // Step 5: Calculate gallons per acre using standard sprayer formula
+  const catch15_gal = catch15mL / ML_PER_GALLON;
+  const gpm_per_nozzle = catch15_gal / 0.25;
   const gpa = (gpm_per_nozzle * SPRAYER_CONST) / (mph * spacingIn);
-  
-  // Step 6: Calculate tanks needed per acre
   const tanksPerAcre = gpa > 0 ? (TANK_SIZE / gpa).toFixed(2) : 0;
 
-  // Step 7: Display all calculated results
+  // Display results
   document.getElementById('results-current').style.display = 'block';
   document.getElementById('speed_current').innerText = mph.toFixed(2);
   document.getElementById('gpm_current').innerText = gpm_per_nozzle.toFixed(3);
@@ -762,73 +684,33 @@ function calculateCurrent(){
   document.getElementById('tanks_per_acre_current').innerText = tanksPerAcre;
 }
 
-/* 
-=== TARGET GPA CALCULATION ===
-This function calculates what nozzle flow rate you need to achieve a desired GPA
-
-CALCULATION STEPS:
-1. Get all input values from the form
-2. Check that all inputs are valid positive numbers  
-3. Calculate ground speed from distance and time
-4. Use sprayer formula to calculate required nozzle flow rate
-5. Convert flow rate to mL per 15 seconds (for easy field measurement)
-6. Calculate how many 50-gallon tanks needed per acre
-7. Display all results
-*/
+/* TARGET GPA CALCULATION - Calculates requirements for desired GPA */
 function calculateTarget(){
-  // Step 1: Get input values from the form
+  // Get input values
   const targetGPA = parseFloat(document.getElementById('target_gpa').value),
         spacingIn = parseFloat(document.getElementById('spacing_in_target').value),
         distFt = parseFloat(document.getElementById('calib_distance_ft_target').value),
         timeSec = parseFloat(document.getElementById('calib_time_sec_target').value);
 
-  // Step 2: Validate that all inputs are positive numbers
+  // Validate inputs
   if([targetGPA, spacingIn, distFt, timeSec].some(v => !isFinite(v) || v <= 0)){
     alert('Please provide valid positive inputs for all fields');
     return;
   }
 
-  // Step 3: Calculate ground speed in miles per hour
+  // Calculate results
   const mph = (distFt / timeSec) * (SEC_PER_HOUR / FT_PER_MILE);
-  
-  // Step 4: Calculate required nozzle flow rate using sprayer formula
   const gpm_needed = (targetGPA * mph * spacingIn) / SPRAYER_CONST;
-  
-  // Step 5: Convert flow rate to milliliters for easy field measurement
-  const ml_per_min = gpm_needed * ML_PER_GALLON;              // Convert to mL per minute
-  const req15_ml = ml_per_min * 0.25;                         // Convert to mL per 15 seconds
-  
-  // Step 6: Calculate tanks needed per acre
+  const ml_per_min = gpm_needed * ML_PER_GALLON;
+  const req15_ml = ml_per_min * 0.25;
   const tanksPerAcre = targetGPA > 0 ? (TANK_SIZE / targetGPA).toFixed(2) : 0;
 
-  // Step 7: Display all calculated results
+  // Display results
   document.getElementById('results-target').style.display = 'block';
   document.getElementById('speed_target').innerText = mph.toFixed(2);
   document.getElementById('ml_min_target').innerText = ml_per_min.toFixed(1);
   document.getElementById('req15_ml').innerText = req15_ml.toFixed(1);
   document.getElementById('tanks_per_acre_target').innerText = tanksPerAcre;
-}
-
-/* 
-=== GPA QUICK SELECTION ===
-This function handles the quick GPA selection buttons (10, 15, 20, Custom)
-It automatically fills in the GPA input field when you click a button
-*/
-function setGPA(value, button){
-  const input = document.getElementById('target_gpa');
-  
-  if(value !== null){ 
-    // If a specific GPA value was clicked, set the input field to that value
-    input.value = value;
-  } else {
-    // If "Custom" was clicked, focus on the input field so user can type their own value
-    input.focus();
-    input.select();
-  }
-  
-  // Update button appearance - remove "active" from all buttons, then add it to the clicked button
-  document.querySelectorAll('.gpa-btn').forEach(btn => btn.classList.remove('active'));
-  button.classList.add('active');
 }
 </script>
 </body>
