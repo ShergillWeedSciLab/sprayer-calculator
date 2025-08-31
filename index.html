@@ -136,21 +136,22 @@ Styles for the application title, subtitle, and branding
   text-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Pro badge styling */
 .pro-badge {
-  background: rgba(217, 120, 45, 0.1);
+  background: rgba(217, 120, 45, 0.08);
   color: var(--color-primary-orange);
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 0.35em;
-  font-weight: 600;
-  margin-left: 1px;
+  padding: 2px 6px;
+  border-radius: 2px; /* subtle rounding for a clean rectangle */
+  font-size: 0.5em;
+  font-weight: 500;
+  margin-left: 4px;
   display: inline-block;
   border: 1px solid rgba(217, 120, 45, 0.2);
-  vertical-align: top;
+  line-height: 1;
   position: relative;
-  top: 0.1em;
+  top: 0.05em;
+  white-space: nowrap;
 }
+
 
 .subtitle {
   font-size: 1rem;
