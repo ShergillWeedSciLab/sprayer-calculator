@@ -175,7 +175,7 @@ Uses CSS transitions for smooth hover and active states.
 .tab { 
   flex: 1; 
   text-align: center; 
-  padding: 10px var(--spacing-md); 
+  padding: 16px var(--spacing-xl); 
   border: none; 
   border-radius: 10px 10px 0 0;
   font-weight: 600; 
@@ -185,7 +185,7 @@ Uses CSS transitions for smooth hover and active states.
   color: var(--color-text-primary);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transform: translateY(0);
-  font-size: 15px;
+  font-size: 24px;
 }
 
 .tab:hover {
@@ -440,7 +440,7 @@ Styling for the calculation results section including:
 /* Result card title */
 .result-card h3 {
   margin: 0 0 4px; 
-  font-size: 16px; 
+  font-size: 20px; 
   font-weight: 700; 
   color: #333;
 }
@@ -573,8 +573,8 @@ on all device sizes from phones to desktops.
   .tab {
     border-radius: 10px;
     margin-bottom: 5px;
-    font-size: 16px;
-    padding: var(--spacing-md) 16px;
+    font-size: 22px;
+    padding: 18px 24px;
   }
   
   .results-grid {
@@ -1047,7 +1047,7 @@ Uses semantic HTML structure for accessibility.
       <!-- Version and build information -->
       <div class="footer-meta">
         <span id="version-info" aria-label="Application version and build information">
-          SWSL SprayCal Pro v1.2 | Built with AI
+          SWSL SprayCal Pro v2.8 | Built with AI
         </span>
       </div>
       
@@ -1063,7 +1063,7 @@ Uses semantic HTML structure for accessibility.
   ================================================
   -->
   <div class="print-footer" id="print-footer" aria-hidden="true">
-    SWSL SprayCal Pro v1.2 | Developed by <strong>Dr. Lovreet S. Shergill</strong> | Colorado State University
+    SWSL SprayCal Pro v2.8 | Developed by <strong>Dr. Lovreet S. Shergill</strong> | Colorado State University
   </div>
   
 </div>
@@ -1133,13 +1133,13 @@ function updateVersionInfo() {
   // Update main footer version display
   const versionElement = document.getElementById('version-info');
   if (versionElement) {
-    versionElement.textContent = `${APP_TITLE} ${APP_VERSION} | Built with AI ;
+    versionElement.textContent = `${APP_TITLE} ${APP_VERSION} | Built with AI`;
   }
   
-  // Update developer name display - Fixed: Remove duplicate "Developed by" text
+  // Update developer name display
   const developerElement = document.getElementById('developer-name-display');
   if (developerElement) {
-    developerElement.innerHTML = `<strong>${DEVELOPER_NAME}</strong>`;
+    developerElement.textContent = DEVELOPER_NAME;
   }
   
   // Update institution display
