@@ -1040,14 +1040,14 @@ Uses semantic HTML structure for accessibility.
           Developed by <strong id="developer-name-display">Dr. Lovreet S. Shergill</strong>
         </p>
         <p class="developer-affiliation" id="institution-display">
-          Agricultural Biology Department | Colorado State University
+          Agricultural Biology | Colorado State University
         </p>
       </div>
       
       <!-- Version and build information -->
       <div class="footer-meta">
         <span id="version-info" aria-label="Application version and build information">
-          SWSL SprayCal Pro v1.2 | August 2025 | Built with AI assistance
+          SWSL SprayCal Pro v1.2 | Built with AI
         </span>
       </div>
       
@@ -1133,7 +1133,7 @@ function updateVersionInfo() {
   // Update main footer version display
   const versionElement = document.getElementById('version-info');
   if (versionElement) {
-    versionElement.textContent = `${APP_TITLE} ${APP_VERSION} | Built with AI;
+    versionElement.textContent = `${APP_TITLE} ${APP_VERSION} | Built with AI ;
   }
   
   // Update developer name display - Fixed: Remove duplicate "Developed by" text
