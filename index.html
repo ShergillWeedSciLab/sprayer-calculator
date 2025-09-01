@@ -18,12 +18,11 @@ and print layouts throughout the application.
 ================================================
 -->
 <script>
-  const APP_VERSION = "v2.7";
-  const APP_DATE = "August 2025";
+  const APP_VERSION = "v2.8";
   const APP_TITLE = "SWSL SprayCal Pro";
   const DEVELOPER_NAME = "Dr. Lovreet S. Shergill";
   const INSTITUTION = "Colorado State University";
-  const DEPARTMENT = "Agricultural Biology Department";
+  const DEPARTMENT = "Agricultural Biology";
 </script>
 
 <style>
@@ -1134,7 +1133,7 @@ function updateVersionInfo() {
   // Update main footer version display
   const versionElement = document.getElementById('version-info');
   if (versionElement) {
-    versionElement.textContent = `${APP_TITLE} ${APP_VERSION} | ${APP_DATE} | Built with AI assistance`;
+    versionElement.textContent = `${APP_TITLE} ${APP_VERSION} | Built with AI;
   }
   
   // Update developer name display - Fixed: Remove duplicate "Developed by" text
